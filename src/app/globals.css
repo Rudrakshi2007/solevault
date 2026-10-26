@@ -4,13 +4,13 @@
 
 @layer base {
   :root {
-    --background: #090909;
-    --foreground: #F4F1EA;
+    --background: #050608;
+    --foreground: #F2F5F7;
   }
 
   body {
-    background-color: #090909;
-    color: #F4F1EA;
+    background-color: #050608;
+    color: #F2F5F7;
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
     overflow-x: hidden;
     -webkit-font-smoothing: antialiased;
@@ -18,26 +18,26 @@
   }
 
   ::selection {
-    background-color: #D7FF3F;
-    color: #090909;
+    background-color: #35E6D3;
+    color: #050608;
   }
 }
 
-/* Custom minimal scrollbar */
+/* Custom minimal aurora scrollbar */
 ::-webkit-scrollbar {
   width: 6px;
   height: 6px;
 }
 
 ::-webkit-scrollbar-track {
-  background: #090909;
+  background: #050608;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #262626;
+  background: #18232C;
   border-radius: 9999px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #D7FF3F;
+  background: #35E6D3;
 }

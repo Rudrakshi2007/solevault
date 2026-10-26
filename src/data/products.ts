@@ -244,7 +244,7 @@ export const PRODUCTS: Product[] = [
     description: 'Originally built for ultra-marathoners traversing the Alps, adopted by Paris Fashion Week avant-garde. Quicklace system, Sensifit cradling, and Agile Chassis System stability.',
     images: [
       'https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&w=1200&q=85',
-      'https://images.unsplash.com/photo-1512374382149-233c42b661ac?auto=format&fit=crop&w=1200&q=85'
+      'https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&w=1200&q=85'
     ],
     price: 18999,
     originalPrice: 21999,
@@ -1394,7 +1394,7 @@ export const PRODUCTS: Product[] = [
     description: 'Technical archetypal footwear engineered with Kurim envelope cage structure, dual-density medial post, and ventilation ports throughout the upper.',
     images: [
       'https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&w=1200&q=85',
-      'https://images.unsplash.com/photo-1512374382149-233c42b661ac?auto=format&fit=crop&w=1200&q=85'
+      'https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&w=1200&q=85'
     ],
     price: 19999,
     originalPrice: 22999,
@@ -1749,7 +1749,7 @@ export const PRODUCTS: Product[] = [
     description: 'Trail-tested ruggedness meets high-fashion dark luxury. GORE-TEX waterproof bootie, non-wicking mesh, Vibram Megagrip lugged outsole, and Meta-Rocker geometry.',
     images: [
       'https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&w=1200&q=85',
-      'https://images.unsplash.com/photo-1512374382149-233c42b661ac?auto=format&fit=crop&w=1200&q=85'
+      'https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&w=1200&q=85'
     ],
     price: 24999,
     colorways: [
@@ -1985,7 +1985,7 @@ export const PRODUCTS: Product[] = [
     description: 'Legendary grip for mud and rough terrain. Updated with faster mud evacuation and an even tighter SensiFit wrap for supreme trail precision.',
     images: [
       'https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&w=1200&q=85',
-      'https://images.unsplash.com/photo-1512374382149-233c42b661ac?auto=format&fit=crop&w=1200&q=85'
+      'https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&w=1200&q=85'
     ],
     price: 17999,
     originalPrice: 19999,
@@ -2483,7 +2483,7 @@ export const CATEGORIES = [
   { id: 'basketball', name: 'Basketball', count: PRODUCTS.filter(p => p.category === 'basketball').length, image: 'https://images.unsplash.com/photo-1579338559194-a162d19bf842?auto=format&fit=crop&w=800&q=80' },
   { id: 'lifestyle', name: 'Lifestyle', count: PRODUCTS.filter(p => p.category === 'lifestyle').length, image: 'https://images.unsplash.com/photo-1608231387042-66d1773070a5?auto=format&fit=crop&w=800&q=80' },
   { id: 'skate', name: 'Skate', count: PRODUCTS.filter(p => p.category === 'skate').length, image: 'https://images.unsplash.com/photo-1525966222134-fcfa99b8ae77?auto=format&fit=crop&w=800&q=80' },
-  { id: 'hiking', name: 'Hiking & Trail', count: PRODUCTS.filter(p => p.category === 'hiking').length, image: 'https://images.unsplash.com/photo-1512374382149-233c42b661ac?auto=format&fit=crop&w=800&q=80' },
+  { id: 'hiking', name: 'Hiking & Trail', count: PRODUCTS.filter(p => p.category === 'hiking').length, image: 'https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&w=800&q=80' },
   { id: 'formal', name: 'Formal & Sartorial', count: PRODUCTS.filter(p => p.category === 'formal').length, image: 'https://images.unsplash.com/photo-1614252235316-8c857d38b5f4?auto=format&fit=crop&w=800&q=80' },
   { id: 'boots', name: 'Boots', count: PRODUCTS.filter(p => p.category === 'boots').length, image: 'https://images.unsplash.com/photo-1608256246200-53e635b5b65f?auto=format&fit=crop&w=800&q=80' },
   { id: 'slides', name: 'Slides & Clogs', count: PRODUCTS.filter(p => p.category === 'slides').length, image: 'https://images.unsplash.com/photo-1543163521-1bf539c55dd2?auto=format&fit=crop&w=800&q=80' },

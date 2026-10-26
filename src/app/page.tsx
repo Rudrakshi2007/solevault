@@ -1,35 +1,31 @@
 import React from 'react';
-import { PRODUCTS } from '@/data/products';
-import { HeroCarousel } from '@/components/HeroCarousel';
-import { FeaturedDrop } from '@/components/FeaturedDrop';
-import { CategoryWorlds } from '@/components/CategoryWorlds';
-import { TrendingSection } from '@/components/TrendingSection';
-import { EditorialCampaign } from '@/components/EditorialCampaign';
-import { NewArrivalsRail } from '@/components/NewArrivalsRail';
+import { AuroraHero } from '@/components/AuroraHero';
+import { ScrollExperience3D } from '@/components/ScrollExperience3D';
+import { FeaturedShowcase } from '@/components/FeaturedShowcase';
+import { ProductDetailExploration } from '@/components/ProductDetailExploration';
+import { CollectionExplorer } from '@/components/CollectionExplorer';
+import { FinalCinematicCTA } from '@/components/FinalCinematicCTA';
 
 export default function HomePage() {
-  // Select top 5 flagship slides for the hero
-  const heroSlides = PRODUCTS.filter((p) => p.heroSlide);
-
   return (
-    <div className="w-full min-h-screen bg-obsidian">
-      {/* 1. Cinematic Signature Hero Carousel */}
-      <HeroCarousel slides={heroSlides} />
+    <div className="w-full min-h-screen bg-obsidian text-softWhite selection:bg-auroraTeal selection:text-obsidian">
+      {/* Section 1: Cinematic Hero */}
+      <AuroraHero />
 
-      {/* 2. Featured Drop: NOT MADE TO BLEND IN */}
-      <FeaturedDrop />
+      {/* Section 2: Scroll-Driven 3D Aurora Experience (5 Stages) */}
+      <ScrollExperience3D />
 
-      {/* 3. Category Worlds */}
-      <CategoryWorlds />
+      {/* Section 3: Featured Sneaker Showcase (THE NEXT LEVEL OF EVERYDAY) */}
+      <FeaturedShowcase />
 
-      {/* 4. Trending Collection */}
-      <TrendingSection products={PRODUCTS} />
+      {/* Section 4: Product Detail Exploration (Silhouette, Material, Detail, Finish) */}
+      <ProductDetailExploration />
 
-      {/* 5. Editorial Campaign: EVERY STEP HAS A SIGNATURE */}
-      <EditorialCampaign />
+      {/* Section 5: Collection Explorer (Aurora-styled Cards) */}
+      <CollectionExplorer />
 
-      {/* 6. New Arrivals Horizontal Rail */}
-      <NewArrivalsRail products={PRODUCTS} />
+      {/* Section 6: Final Cinematic CTA (YOUR NEXT ICON AWAITS) */}
+      <FinalCinematicCTA />
     </div>
   );
 }

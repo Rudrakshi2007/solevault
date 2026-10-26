@@ -46,25 +46,25 @@ export function QuickAddModal() {
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
       {/* Backdrop */}
       <div
-        className="fixed inset-0 bg-black/85 backdrop-blur-sm transition-opacity"
+        className="fixed inset-0 bg-black/85 backdrop-blur-md transition-opacity"
         onClick={closeQuickAdd}
       />
 
       {/* Modal Dialog */}
-      <div className="relative z-10 w-full max-w-lg bg-obsidian border border-charcoal rounded-2xl p-6 shadow-2xl overflow-hidden animate-fade-in">
+      <div className="relative z-10 w-full max-w-lg bg-obsidian border border-deepSpace-border rounded-3xl p-6 shadow-2xl overflow-hidden animate-fade-in">
         {/* Header */}
-        <div className="flex items-start justify-between pb-4 border-b border-charcoal">
+        <div className="flex items-start justify-between pb-4 border-b border-deepSpace-border">
           <div>
-            <span className="text-[10px] font-mono tracking-widest text-lime uppercase font-semibold">
-              QUICK SELECTION
+            <span className="text-[10px] font-mono tracking-widest text-auroraTeal uppercase font-bold">
+              QUICK SELECTION // AURORA
             </span>
-            <h2 className="text-lg font-bold text-ivory line-clamp-1 mt-0.5">
+            <h2 className="text-lg font-bold text-softWhite line-clamp-1 mt-0.5">
               {quickAddProduct.name}
             </h2>
           </div>
           <button
             onClick={closeQuickAdd}
-            className="p-1.5 rounded-full text-mutedGrey hover:text-ivory hover:bg-charcoal transition-colors"
+            className="p-1.5 rounded-full text-mutedGrey hover:text-softWhite hover:bg-deepSpace transition-colors"
             aria-label="Close modal"
           >
             <X className="w-5 h-5" />
@@ -75,7 +75,7 @@ export function QuickAddModal() {
         <div className="py-5 space-y-5">
           {/* Sneaker Preview Row */}
           <div className="flex items-center gap-4">
-            <div className="relative w-20 h-20 rounded-lg overflow-hidden bg-charcoal border border-charcoal-light flex-shrink-0">
+            <div className="relative w-20 h-20 rounded-xl overflow-hidden bg-deepSpace border border-deepSpace-border flex-shrink-0">
               <Image
                 src={quickAddProduct.images[0]}
                 alt={quickAddProduct.name}
@@ -87,7 +87,7 @@ export function QuickAddModal() {
               <span className="text-xs font-mono text-mutedGrey uppercase block">
                 {quickAddProduct.brand}
               </span>
-              <span className="text-base font-mono font-bold text-lime">
+              <span className="text-base font-mono font-bold text-auroraTeal">
                 {formatINR(quickAddProduct.price)}
               </span>
               <span className="text-[11px] font-mono text-mutedGrey-dark block">
@@ -100,21 +100,21 @@ export function QuickAddModal() {
           {quickAddProduct.colorways.length > 1 && (
             <div>
               <span className="text-xs font-mono text-mutedGrey uppercase block mb-2">
-                Colorway: <span className="text-ivory">{currentColor}</span>
+                Colorway: <span className="text-softWhite">{currentColor}</span>
               </span>
               <div className="flex flex-wrap gap-2">
                 {quickAddProduct.colorways.map((col) => (
                   <button
                     key={col.name}
                     onClick={() => setSelectedColor(col.name)}
-                    className={`flex items-center gap-2 px-3 py-1.5 rounded-lg border text-xs font-mono transition-all ${
+                    className={`flex items-center gap-2 px-3 py-1.5 rounded-xl border text-xs font-mono transition-all ${
                       currentColor === col.name
-                        ? 'border-lime bg-lime/10 text-ivory'
-                        : 'border-charcoal hover:border-mutedGrey-dark text-mutedGrey'
+                        ? 'border-auroraTeal bg-auroraTeal/10 text-softWhite'
+                        : 'border-deepSpace-border hover:border-mutedGrey text-mutedGrey'
                     }`}
                   >
                     <span
-                      className="w-3 h-3 rounded-full border border-charcoal-light"
+                      className="w-3 h-3 rounded-full border border-white/10"
                       style={{ backgroundColor: col.hex }}
                     />
                     <span>{col.name}</span>
@@ -133,7 +133,7 @@ export function QuickAddModal() {
               <button
                 type="button"
                 onClick={openSizeGuide}
-                className="text-[11px] font-mono text-lime hover:underline flex items-center gap-1"
+                className="text-[11px] font-mono text-auroraTeal hover:underline flex items-center gap-1"
               >
                 <HelpCircle className="w-3.5 h-3.5" />
                 <span>Size Guide</span>
@@ -154,12 +154,12 @@ export function QuickAddModal() {
                       setSelectedSize(s.size);
                       setError(null);
                     }}
-                    className={`py-2 px-1 text-center rounded-lg text-xs font-mono font-bold transition-all ${
+                    className={`py-2 px-1 text-center rounded-xl text-xs font-mono font-bold transition-all ${
                       isSelected
-                        ? 'bg-lime text-obsidian shadow-md shadow-lime/20'
+                        ? 'bg-auroraTeal text-obsidian shadow-md shadow-auroraTeal/20'
                         : isAvailable
-                        ? 'bg-charcoal hover:bg-charcoal-light text-ivory border border-charcoal-border hover:border-mutedGrey'
-                        : 'bg-obsidian-deep text-mutedGrey-dark border border-charcoal/40 line-through cursor-not-allowed opacity-40'
+                        ? 'bg-deepSpace hover:bg-deepSpace-light text-softWhite border border-deepSpace-border hover:border-auroraTeal/40'
+                        : 'bg-obsidian-deep text-mutedGrey-dark border border-deepSpace-border/40 line-through cursor-not-allowed opacity-40'
                     }`}
                     title={isAvailable ? `Available` : `Sold out in this size`}
                   >
@@ -176,18 +176,18 @@ export function QuickAddModal() {
         </div>
 
         {/* Footer Actions */}
-        <div className="pt-4 border-t border-charcoal flex gap-3">
+        <div className="pt-4 border-t border-deepSpace-border flex gap-3">
           <button
             type="button"
             onClick={closeQuickAdd}
-            className="w-1/3 py-3 rounded-lg border border-charcoal text-xs font-mono uppercase tracking-wider text-mutedGrey hover:text-ivory hover:bg-charcoal transition-colors"
+            className="w-1/3 py-3 rounded-xl border border-deepSpace-border text-xs font-mono uppercase tracking-wider text-mutedGrey hover:text-softWhite hover:bg-deepSpace transition-colors"
           >
             Cancel
           </button>
           <button
             type="button"
             onClick={handleAddToCart}
-            className="w-2/3 py-3 rounded-lg bg-lime hover:bg-lime-hover text-obsidian text-xs font-mono font-bold uppercase tracking-wider transition-all duration-200 flex items-center justify-center gap-2 shadow-lg shadow-lime/20"
+            className="w-2/3 py-3 rounded-xl bg-auroraTeal hover:bg-auroraTeal-hover text-obsidian text-xs font-mono font-bold uppercase tracking-wider transition-all duration-300 flex items-center justify-center gap-2 shadow-lg shadow-auroraTeal/20"
           >
             <Check className="w-4 h-4" />
             <span>ADD TO CART</span>
