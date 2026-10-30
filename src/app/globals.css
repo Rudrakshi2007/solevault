@@ -4,21 +4,27 @@
 
 @layer base {
   :root {
-    --background: #F5FBFF;
-    --foreground: #172B3A;
-    --sky-blue: #55C7F2;
+    --bright-cyan: #079FCB;
+    --electric-turquoise: #12B5D0;
+    --ocean-blue: #087EAD;
+    --deep-royal-blue: #07539B;
+    --dark-navy-blue: #073B78;
+
+    --soft-coral-pink: #F28A9A;
+    --vibrant-rose: #EF648F;
+    --hot-pink: #E83E9C;
+    --warm-peach: #F6A6A0;
+
     --pure-white: #FFFFFF;
-    --hot-pink: #FF3D9A;
-    --light-sky-blue: #B9EBFF;
-    --deep-ocean-blue: #087EAD;
-    --soft-pink: #FFB5D8;
-    --pale-background: #F5FBFF;
-    --dark-text: #172B3A;
+    --soft-white: #F4FAFC;
+    --translucent-cyan: rgba(133, 220, 237, 0.30);
+    --frosted-white: rgba(255, 255, 255, 0.20);
+    --transparent-blue: rgba(0, 116, 174, 0.35);
   }
 
   body {
-    background-color: #F5FBFF;
-    color: #172B3A;
+    background-color: #073B78;
+    color: #FFFFFF;
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
     overflow-x: hidden;
     -webkit-font-smoothing: antialiased;
@@ -26,151 +32,155 @@
   }
 
   ::selection {
-    background-color: #FF3D9A;
+    background-color: #E83E9C;
     color: #FFFFFF;
   }
 }
 
 /* =========================================================================
-   SIGNATURE VISUAL TEXTURES: SKY BLUE × WHITE × HOT PINK
+   EXACT REFERENCE BACKGROUND: CYAN × TURQUOISE × CORAL PINK LUMINESCENCE
    ========================================================================= */
 
-/* A. Vertical Glass Texture: Subtle vertical translucent lines across sections */
-.texture-vertical-glass {
+/* The signature atmospheric canvas matching the reference screenshot */
+.reference-atmosphere {
+  position: relative;
+  background-color: #073B78;
+  background-image:
+    /* Central warm pink & coral ambient light diffusion */
+    radial-gradient(ellipse 55% 45% at 46% 50%, rgba(239, 100, 143, 0.72) 0%, rgba(242, 138, 154, 0.55) 25%, rgba(232, 62, 156, 0.35) 45%, transparent 70%),
+    /* Warm peach inner core illumination */
+    radial-gradient(circle 320px at 42% 44%, rgba(246, 166, 160, 0.85) 0%, rgba(239, 100, 143, 0.4) 50%, transparent 80%),
+    /* Upper cyan / electric turquoise illumination */
+    radial-gradient(ellipse 70% 55% at 20% 15%, rgba(18, 181, 208, 0.95) 0%, rgba(7, 159, 203, 0.8) 40%, transparent 75%),
+    /* Right ocean / royal blue ambient wash */
+    radial-gradient(ellipse 65% 60% at 85% 30%, rgba(7, 83, 155, 0.9) 0%, rgba(8, 126, 173, 0.6) 45%, transparent 75%),
+    /* Bottom deep navy royal shadow gradient */
+    radial-gradient(ellipse 80% 50% at 50% 95%, rgba(4, 37, 78, 0.95) 0%, rgba(7, 59, 120, 0.75) 50%, transparent 85%),
+    /* Base directional gradient from electric turquoise to dark navy */
+    linear-gradient(135deg, #079FCB 0%, #087EAD 35%, #07539B 70%, #073B78 100%);
+  background-attachment: fixed;
+}
+
+/* Vertical fluted glass light-streak texture (exact reference signature) */
+.vertical-glass-streaks {
+  position: relative;
+}
+
+.vertical-glass-streaks::before {
+  content: "";
+  position: absolute;
+  inset: 0;
   background-image: repeating-linear-gradient(
     90deg,
-    rgba(85, 199, 242, 0.05) 0px,
-    rgba(85, 199, 242, 0.05) 1px,
-    transparent 1px,
-    transparent 48px,
-    rgba(255, 61, 154, 0.03) 48px,
-    rgba(255, 61, 154, 0.03) 49px,
-    transparent 49px,
-    transparent 120px,
-    rgba(85, 199, 242, 0.07) 120px,
-    rgba(85, 199, 242, 0.07) 121px,
-    transparent 121px,
-    transparent 200px,
-    rgba(255, 255, 255, 0.4) 200px,
-    rgba(255, 255, 255, 0.4) 201px,
-    transparent 201px,
-    transparent 280px
+    rgba(255, 255, 255, 0.12) 0px,
+    rgba(255, 255, 255, 0.12) 1.5px,
+    transparent 1.5px,
+    transparent 16px,
+    rgba(133, 220, 237, 0.16) 16px,
+    rgba(133, 220, 237, 0.16) 3px,
+    transparent 3px,
+    transparent 32px
   );
-}
-
-/* B. Ambient Colour Diffusion: Large, blurred light sources */
-.ambient-diffusion-hero {
-  background:
-    radial-gradient(ellipse 60% 50% at 20% 20%, rgba(85, 199, 242, 0.35) 0%, transparent 60%),
-    radial-gradient(ellipse 55% 45% at 85% 25%, rgba(255, 61, 154, 0.3) 0%, transparent 55%),
-    radial-gradient(circle 400px at 50% 65%, rgba(255, 255, 255, 0.85) 0%, rgba(185, 235, 255, 0.35) 40%, transparent 70%),
-    radial-gradient(ellipse 50% 40% at 75% 85%, rgba(85, 199, 242, 0.25) 0%, transparent 50%),
-    linear-gradient(180deg, #F5FBFF 0%, #EBF6FC 100%);
-}
-
-.ambient-diffusion-showcase {
-  background:
-    radial-gradient(ellipse 50% 45% at 80% 30%, rgba(255, 61, 154, 0.22) 0%, transparent 55%),
-    radial-gradient(ellipse 60% 50% at 15% 70%, rgba(85, 199, 242, 0.28) 0%, transparent 60%),
-    radial-gradient(circle 350px at 50% 50%, rgba(255, 255, 255, 0.6) 0%, transparent 60%),
-    linear-gradient(180deg, #EBF6FC 0%, #F5FBFF 100%);
-}
-
-.ambient-diffusion-cta {
-  background:
-    radial-gradient(circle 500px at 50% 40%, rgba(255, 255, 255, 0.95) 0%, rgba(185, 235, 255, 0.4) 35%, transparent 70%),
-    radial-gradient(ellipse 60% 45% at 20% 80%, rgba(85, 199, 242, 0.35) 0%, transparent 55%),
-    radial-gradient(ellipse 60% 45% at 80% 75%, rgba(255, 61, 154, 0.3) 0%, transparent 55%),
-    linear-gradient(180deg, #F5FBFF 0%, #E0F2FA 100%);
-}
-
-/* D. Fine Grain Texture: Subtle tactile noise */
-.grain-overlay {
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.035'/%3E%3C/svg%3E");
-}
-
-/* C. Frosted Glass Surfaces */
-.frosted-glass-card {
-  background: rgba(255, 255, 255, 0.78);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  border: 1px solid rgba(85, 199, 242, 0.3);
-  box-shadow:
-    0 18px 36px -12px rgba(8, 126, 173, 0.08),
-    0 0 20px -4px rgba(85, 199, 242, 0.12),
-    inset 0 1px 1px 0 rgba(255, 255, 255, 0.95);
-  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-.frosted-glass-card:hover {
-  border-color: rgba(255, 61, 154, 0.5);
-  box-shadow:
-    0 24px 48px -12px rgba(255, 61, 154, 0.16),
-    0 0 32px -4px rgba(85, 199, 242, 0.24),
-    inset 0 1px 2px 0 rgba(255, 255, 255, 1);
-}
-
-.frosted-glass-nav {
-  background: rgba(255, 255, 255, 0.84);
-  backdrop-filter: blur(24px);
-  -webkit-backdrop-filter: blur(24px);
-  border: 1px solid rgba(85, 199, 242, 0.32);
-  box-shadow:
-    0 12px 30px -8px rgba(8, 126, 173, 0.1),
-    0 0 20px 0 rgba(85, 199, 242, 0.12),
-    inset 0 1px 1px 0 rgba(255, 255, 255, 0.95);
+  pointer-events: none;
+  z-index: 1;
+  mix-blend-mode: overlay;
+  opacity: 0.85;
 }
 
 /* =========================================================================
-   BUTTON DESIGN SYSTEM
+   REFERENCE GLASSMORPHISM & TRANSLUCENT SURFACES
    ========================================================================= */
 
-/* Primary Button: Sky Blue Gradient */
-.btn-sky-gradient {
-  background: linear-gradient(135deg, #55C7F2 0%, #087EAD 100%);
-  color: #FFFFFF;
-  box-shadow: 0 8px 24px -4px rgba(85, 199, 242, 0.45);
-  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
-}
-.btn-sky-gradient:hover {
-  filter: brightness(1.05);
-  box-shadow: 0 12px 30px -4px rgba(85, 199, 242, 0.6);
-  transform: translateY(-1px);
-}
-.btn-sky-gradient:active {
-  transform: translateY(0);
+/* Floating pill navigation matching the reference */
+.reference-nav-pill {
+  background: rgba(7, 159, 203, 0.22);
+  backdrop-filter: blur(28px);
+  -webkit-backdrop-filter: blur(28px);
+  border: 1px solid rgba(255, 255, 255, 0.28);
+  box-shadow:
+    0 15px 35px -5px rgba(4, 37, 78, 0.4),
+    0 0 25px 0 rgba(18, 181, 208, 0.25),
+    inset 0 1px 1px 0 rgba(255, 255, 255, 0.4);
 }
 
-/* Secondary Button: White with Blue Typography */
-.btn-secondary-white {
-  background: rgba(255, 255, 255, 0.92);
-  color: #087EAD;
-  border: 1px solid rgba(85, 199, 242, 0.45);
-  box-shadow: 0 4px 14px -2px rgba(8, 126, 173, 0.08);
+/* Translucent cyan-blue content card */
+.reference-glass-card {
+  background: rgba(7, 83, 155, 0.32);
+  backdrop-filter: blur(28px);
+  -webkit-backdrop-filter: blur(28px);
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  box-shadow:
+    0 24px 50px -12px rgba(4, 37, 78, 0.5),
+    0 0 30px -5px rgba(7, 159, 203, 0.25),
+    inset 0 1px 1px 0 rgba(255, 255, 255, 0.3);
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.reference-glass-card:hover {
+  background: rgba(7, 83, 155, 0.42);
+  border-color: rgba(255, 255, 255, 0.4);
+  box-shadow:
+    0 30px 60px -12px rgba(4, 37, 78, 0.65),
+    0 0 40px -5px rgba(239, 100, 143, 0.35),
+    inset 0 1px 2px 0 rgba(255, 255, 255, 0.45);
+}
+
+/* Inner sub-card panel */
+.reference-sub-panel {
+  background: rgba(7, 59, 120, 0.45);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  box-shadow: inset 0 1px 1px 0 rgba(255, 255, 255, 0.15);
+}
+
+/* =========================================================================
+   BUTTON DESIGN SYSTEM (EXACT REFERENCE BUTTONS)
+   ========================================================================= */
+
+/* Primary Pill: Pure White with Navy Typography */
+.btn-reference-white {
+  background: #FFFFFF;
+  color: #073B78;
+  font-weight: 700;
+  border: 1px solid rgba(255, 255, 255, 0.9);
+  box-shadow: 0 10px 25px -4px rgba(255, 255, 255, 0.45), 0 0 20px rgba(18, 181, 208, 0.3);
   transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
 }
-.btn-secondary-white:hover {
-  background: #F5FBFF;
-  border-color: #55C7F2;
-  color: #055474;
-  box-shadow: 0 8px 20px -2px rgba(85, 199, 242, 0.25);
+.btn-reference-white:hover {
+  background: #F4FAFC;
+  transform: translateY(-1px) scale(1.02);
+  box-shadow: 0 14px 30px -4px rgba(255, 255, 255, 0.6), 0 0 25px rgba(255, 255, 255, 0.5);
+}
+
+/* Secondary Pill: Translucent Cyan-Glass with White Typography */
+.btn-reference-glass {
+  background: rgba(255, 255, 255, 0.12);
+  color: #FFFFFF;
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  box-shadow: 0 8px 20px -4px rgba(0, 0, 0, 0.2);
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.btn-reference-glass:hover {
+  background: rgba(255, 255, 255, 0.22);
+  border-color: rgba(255, 255, 255, 0.5);
   transform: translateY(-1px);
 }
 
-/* Special CTA Button: Hot Pink Gradient */
-.btn-hot-pink {
-  background: linear-gradient(135deg, #FF3D9A 0%, #FF66B2 50%, #FF3D9A 100%);
+/* Vibrant Rose & Pink Pill */
+.btn-reference-pink {
+  background: linear-gradient(135deg, #EF648F 0%, #E83E9C 100%);
   color: #FFFFFF;
-  box-shadow: 0 8px 24px -4px rgba(255, 61, 154, 0.45);
+  font-weight: 700;
+  box-shadow: 0 10px 30px -4px rgba(232, 62, 156, 0.55), 0 0 25px rgba(239, 100, 143, 0.4);
   transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
 }
-.btn-hot-pink:hover {
-  filter: brightness(1.06);
-  box-shadow: 0 14px 34px -4px rgba(255, 61, 154, 0.65);
-  transform: translateY(-1px) scale(1.01);
-}
-.btn-hot-pink:active {
-  transform: translateY(0) scale(1);
+.btn-reference-pink:hover {
+  filter: brightness(1.08);
+  transform: translateY(-1px) scale(1.02);
+  box-shadow: 0 14px 36px -4px rgba(232, 62, 156, 0.75), 0 0 35px rgba(239, 100, 143, 0.6);
 }
 
 /* =========================================================================
@@ -178,22 +188,22 @@
    ========================================================================= */
 
 ::-webkit-scrollbar {
-  width: 8px;
-  height: 8px;
+  width: 7px;
+  height: 7px;
 }
 
 ::-webkit-scrollbar-track {
-  background: #F5FBFF;
+  background: #073B78;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #B9EBFF;
-  border: 2px solid #F5FBFF;
+  background: #079FCB;
   border-radius: 9999px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #55C7F2;
+  background: #EF648F;
 }
 
 @media (prefers-reduced-motion: reduce) {

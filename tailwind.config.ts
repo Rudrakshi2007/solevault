@@ -10,103 +10,104 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        // --- CORE BRAND PALETTE: SKY BLUE × WHITE × HOT PINK ---
-        skyBlue: {
-          DEFAULT: "#55C7F2",
-          light: "#B9EBFF",
-          pale: "#E1F6FF",
-          deep: "#087EAD",
-          hover: "#3EB8E8",
-          glow: "rgba(85, 199, 242, 0.35)",
-          dim: "rgba(85, 199, 242, 0.12)",
+        // --- EXACT PALETTE FROM THE REFERENCE SCREENSHOT ---
+        // Primary Blue & Cyan
+        brightCyan: {
+          DEFAULT: "#079FCB",
+          hover: "#09B3E4",
+          light: "#85DCED",
         },
-        hotPink: {
-          DEFAULT: "#FF3D9A",
-          soft: "#FFB5D8",
-          pale: "#FFE8F3",
-          deep: "#D91B77",
-          hover: "#F52C8C",
-          glow: "rgba(255, 61, 154, 0.35)",
-          dim: "rgba(255, 61, 154, 0.12)",
+        turquoise: {
+          DEFAULT: "#12B5D0",
+          glow: "rgba(18, 181, 208, 0.4)",
         },
         oceanBlue: {
           DEFAULT: "#087EAD",
-          deep: "#055474",
-          light: "#129BCE",
-          border: "rgba(8, 126, 173, 0.2)",
+          deep: "#07539B",
+          dark: "#073B78",
         },
-        pureWhite: "#FFFFFF",
-        paleBg: {
-          DEFAULT: "#F5FBFF",
-          alt: "#EBF6FC",
-          card: "rgba(255, 255, 255, 0.78)",
-          glass: "rgba(255, 255, 255, 0.85)",
+        royalBlue: {
+          DEFAULT: "#07539B",
+          dark: "#073B78",
         },
-        darkText: {
-          DEFAULT: "#172B3A",
-          muted: "#4A667A",
-          light: "#7B96A8",
-          subtle: "#9BB3C4",
+        navyBlue: {
+          DEFAULT: "#073B78",
+          deep: "#04254E",
         },
 
-        // --- BACKWARD-COMPATIBLE SEMANTIC MAPPINGS ---
-        // Maps existing dark tokens to new luminous, atmospheric theme
+        // Pink, Coral & Warm Light
+        coralPink: {
+          DEFAULT: "#F28A9A",
+          vibrant: "#EF648F",
+          hot: "#E83E9C",
+          peach: "#F6A6A0",
+        },
+        vibrantRose: "#EF648F",
+        hotPink: {
+          DEFAULT: "#E83E9C",
+          hover: "#D62B89",
+          glow: "rgba(232, 62, 156, 0.45)",
+        },
+        warmPeach: "#F6A6A0",
+
+        // Light & Transparency
+        pureWhite: "#FFFFFF",
+        softWhite: "#F4FAFC",
+        translucentCyan: "rgba(133, 220, 237, 0.30)",
+        frostedWhite: "rgba(255, 255, 255, 0.20)",
+        transparentBlue: "rgba(0, 116, 174, 0.35)",
+
+        // Backward-compatible semantic tokens mapped to reference
         obsidian: {
-          DEFAULT: "#F5FBFF",
-          deep: "#EBF6FC",
-          elevated: "#FFFFFF",
+          DEFAULT: "#073B78",
+          deep: "#04254E",
+          elevated: "#07539B",
         },
         deepSpace: {
-          DEFAULT: "#FFFFFF",
-          light: "#F5FBFF",
-          border: "rgba(85, 199, 242, 0.25)",
+          DEFAULT: "#07539B",
+          light: "#087EAD",
+          border: "rgba(133, 220, 237, 0.25)",
         },
         midnight: {
-          DEFAULT: "#EBF6FC",
-          light: "#F5FBFF",
-          deep: "#E0F2FA",
-        },
-        auroraTeal: {
-          DEFAULT: "#55C7F2",
-          hover: "#3EB8E8",
-          glow: "rgba(85, 199, 242, 0.35)",
-          dim: "rgba(85, 199, 242, 0.12)",
-        },
-        emeraldGlow: {
-          DEFAULT: "#FF3D9A",
-          hover: "#F52C8C",
-          dim: "rgba(255, 61, 154, 0.15)",
-        },
-        icyBlue: {
-          DEFAULT: "#B9EBFF",
-          light: "#E1F6FF",
-          dim: "rgba(185, 235, 255, 0.25)",
-        },
-        softWhite: {
-          DEFAULT: "#172B3A",
-          muted: "#4A667A",
-          dark: "#7B96A8",
+          DEFAULT: "#073B78",
+          light: "#07539B",
+          deep: "#04254E",
         },
         charcoal: {
-          DEFAULT: "#FFFFFF",
-          light: "#F5FBFF",
-          border: "rgba(85, 199, 242, 0.22)",
+          DEFAULT: "rgba(7, 83, 155, 0.35)",
+          light: "rgba(7, 83, 155, 0.5)",
+          border: "rgba(255, 255, 255, 0.22)",
         },
         ivory: {
-          DEFAULT: "#172B3A",
-          muted: "#4A667A",
-          dark: "#7B96A8",
+          DEFAULT: "#FFFFFF",
+          muted: "#F4FAFC",
+          dark: "#B9EBFF",
+        },
+        softWhiteText: {
+          DEFAULT: "#FFFFFF",
+          muted: "rgba(244, 250, 252, 0.8)",
+          dark: "#85DCED",
         },
         mutedGrey: {
-          DEFAULT: "#5A788D",
-          light: "#7E99AC",
-          dark: "#3B5567",
+          DEFAULT: "#A2DBED",
+          light: "#D8F3FA",
+          dark: "#5AA6C4",
         },
         lime: {
-          DEFAULT: "#FF3D9A",
-          hover: "#F52C8C",
-          dim: "rgba(255, 61, 154, 0.12)",
-          glow: "rgba(255, 61, 154, 0.35)",
+          DEFAULT: "#12B5D0",
+          hover: "#079FCB",
+        },
+        auroraTeal: {
+          DEFAULT: "#079FCB",
+          hover: "#12B5D0",
+        },
+        emeraldGlow: {
+          DEFAULT: "#E83E9C",
+          hover: "#EF648F",
+        },
+        icyBlue: {
+          DEFAULT: "#85DCED",
+          light: "#B9EBFF",
         },
       },
       fontFamily: {
@@ -120,9 +121,9 @@ const config: Config = {
           "sans-serif",
         ],
         display: [
-          "'Impact'",
-          "'Arial Black'",
           "-apple-system",
+          "BlinkMacSystemFont",
+          "'Segoe UI'",
           "sans-serif",
         ],
         mono: [
@@ -133,37 +134,11 @@ const config: Config = {
           "monospace",
         ],
       },
-      letterSpacing: {
-        tighter: "-0.05em",
-        tight: "-0.025em",
-        widest: "0.25em",
-        cinematic: "0.35em",
-      },
       boxShadow: {
-        'glass': '0 20px 40px -15px rgba(8, 126, 173, 0.08), 0 0 25px -5px rgba(85, 199, 242, 0.15)',
-        'glass-hover': '0 25px 50px -12px rgba(255, 61, 154, 0.15), 0 0 35px -5px rgba(85, 199, 242, 0.25)',
-        'glow-sky': '0 0 25px rgba(85, 199, 242, 0.35)',
-        'glow-pink': '0 0 25px rgba(255, 61, 154, 0.35)',
-      },
-      animation: {
-        "fade-in": "fadeIn 0.5s ease-out forwards",
-        "pulse-slow": "pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite",
-        "float": "float 6s ease-in-out infinite",
-        "ambient-pulse": "ambientPulse 8s ease-in-out infinite alternate",
-      },
-      keyframes: {
-        fadeIn: {
-          "0%": { opacity: "0", transform: "translateY(8px)" },
-          "100%": { opacity: "1", transform: "translateY(0)" },
-        },
-        float: {
-          "0%, 100%": { transform: "translateY(0px)" },
-          "50%": { transform: "translateY(-10px)" },
-        },
-        ambientPulse: {
-          "0%": { opacity: "0.6", transform: "scale(1)" },
-          "100%": { opacity: "0.95", transform: "scale(1.08)" },
-        },
+        'pelma-glass': '0 20px 50px -10px rgba(4, 37, 78, 0.5), inset 0 1px 1px 0 rgba(255, 255, 255, 0.35)',
+        'pelma-card': '0 25px 60px -15px rgba(0, 0, 0, 0.35), inset 0 1px 1px 0 rgba(255, 255, 255, 0.25)',
+        'pelma-glow-pink': '0 0 35px rgba(232, 62, 156, 0.5)',
+        'pelma-glow-cyan': '0 0 35px rgba(7, 159, 203, 0.5)',
       },
     },
   },

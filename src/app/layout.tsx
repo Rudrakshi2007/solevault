@@ -38,7 +38,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className="scroll-smooth">
-      <body className="bg-paleBg text-darkText min-h-screen flex flex-col justify-between selection:bg-hotPink selection:text-white relative font-sans antialiased">
+      <body className="reference-atmosphere vertical-glass-streaks text-white min-h-screen flex flex-col justify-between selection:bg-[#E83E9C] selection:text-white relative font-sans antialiased">
         <Navbar />
         <main className="flex-1 w-full relative z-10">{children}</main>
         <Footer />

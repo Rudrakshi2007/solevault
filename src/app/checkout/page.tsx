@@ -82,17 +82,17 @@ export default function CheckoutPage() {
 
   if (cart.length === 0) {
     return (
-      <div className="min-h-screen bg-paleBg texture-vertical-glass py-24 px-4 text-center space-y-6">
-        <ShoppingBag className="w-16 h-16 text-[#55C7F2] mx-auto" />
-        <h1 className="text-2xl sm:text-3xl font-bold font-display uppercase text-[#172B3A]">
+      <div className="min-h-screen py-24 px-4 text-center space-y-6 text-white">
+        <ShoppingBag className="w-16 h-16 text-[#85DCED] mx-auto" />
+        <h1 className="text-2xl sm:text-3xl font-bold font-display uppercase text-white">
           Your Shopping Bag is Empty
         </h1>
-        <p className="text-xs font-mono text-[#5A788D] max-w-sm mx-auto">
+        <p className="text-xs font-mono text-white/70 max-w-sm mx-auto">
           Add an item to your bag before proceeding to demonstration checkout.
         </p>
         <Link
           href="/shop"
-          className="btn-sky-gradient inline-flex items-center gap-2 px-8 py-3.5 rounded-xl text-xs font-mono font-bold uppercase tracking-wider"
+          className="btn-reference-white inline-flex items-center gap-2 px-8 py-3.5 rounded-full text-xs font-mono font-bold uppercase tracking-wider"
         >
           <span>Return To Store</span>
           <ArrowRight className="w-4 h-4" />
@@ -146,34 +146,34 @@ export default function CheckoutPage() {
   };
 
   return (
-    <div className="w-full min-h-screen bg-paleBg texture-vertical-glass py-12 sm:py-16 text-[#172B3A]">
+    <div className="w-full min-h-screen py-12 sm:py-16 text-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
         
         {/* Header Strip */}
-        <div className="pb-6 border-b border-[#55C7F2]/25 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+        <div className="pb-6 border-b border-white/10 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
           <div>
-            <span className="text-[#FF3D9A] text-xs font-mono uppercase tracking-widest font-bold block mb-1">
+            <span className="text-[#F28A9A] text-xs font-mono uppercase tracking-widest font-bold block mb-1">
               DEMO TERMINAL
             </span>
-            <h1 className="text-2xl sm:text-4xl font-black font-display tracking-tight text-[#172B3A] uppercase">
+            <h1 className="text-2xl sm:text-4xl font-black font-display tracking-tight text-white uppercase">
               DEMO CHECKOUT
             </h1>
           </div>
 
-          <div className="flex items-center gap-2 text-xs font-mono text-[#087EAD] bg-white px-3.5 py-2 rounded-xl border border-[#55C7F2]/30 shadow-sm font-semibold">
-            <Lock className="w-3.5 h-3.5 text-[#55C7F2]" />
+          <div className="flex items-center gap-2 text-xs font-mono text-white reference-sub-panel px-3.5 py-2 rounded-full border border-white/20 shadow-sm font-semibold">
+            <Lock className="w-3.5 h-3.5 text-[#85DCED]" />
             <span>256-Bit SSL Demo Sandbox</span>
           </div>
         </div>
 
         {/* Demo Disclosure Box */}
-        <div className="p-4 rounded-2xl bg-white/80 backdrop-blur-md border border-[#55C7F2]/35 flex items-start gap-3 shadow-sm">
-          <ShieldAlert className="w-5 h-5 text-[#FF3D9A] flex-shrink-0 mt-0.5" />
+        <div className="p-4 rounded-2xl reference-sub-panel border border-white/20 flex items-start gap-3 shadow-sm">
+          <ShieldAlert className="w-5 h-5 text-[#F28A9A] flex-shrink-0 mt-0.5" />
           <div className="text-xs font-mono space-y-1">
-            <strong className="text-[#FF3D9A] uppercase font-bold">
+            <strong className="text-[#F28A9A] uppercase font-bold">
               PROTOTYPE DEMONSTRATION DISCLOSURE:
             </strong>
-            <p className="text-[#4A667A] leading-relaxed">
+            <p className="text-white/70 leading-relaxed">
               This is a visual and functional prototype storefront for SOLEVAULT. No real money or credit card charges will be made. The form is pre-filled with demo information to facilitate testing.
             </p>
           </div>
@@ -188,50 +188,50 @@ export default function CheckoutPage() {
               
               {/* Section 1: Customer Contact */}
               <div className="space-y-4">
-                <h2 className="text-sm font-mono uppercase tracking-widest text-[#087EAD] font-bold pb-2 border-b border-[#55C7F2]/25">
+                <h2 className="text-sm font-mono uppercase tracking-widest text-[#85DCED] font-bold pb-2 border-b border-white/10">
                   1. CONTACT INFORMATION
                 </h2>
 
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 text-xs font-mono">
                   <div className="space-y-1 sm:col-span-2">
-                    <label className="text-[#4A667A] uppercase font-semibold">Full Name</label>
+                    <label className="text-white/70 uppercase font-semibold">Full Name</label>
                     <input
                       type="text"
                       {...register('fullName')}
-                      className="w-full bg-white border border-[#B9EBFF] focus:border-[#55C7F2] focus:ring-2 focus:ring-[#55C7F2]/20 rounded-xl px-4 py-3 text-[#172B3A] shadow-sm outline-none transition-all"
+                      className="w-full reference-sub-panel border border-white/20 focus:border-[#85DCED] focus:ring-2 focus:ring-[#85DCED]/20 rounded-xl px-4 py-3 text-white shadow-sm outline-none transition-all"
                     />
                     {errors.fullName && (
-                      <p className="text-[#FF3D9A] text-[11px] font-bold">{errors.fullName.message}</p>
+                      <p className="text-[#F28A9A] text-[11px] font-bold">{errors.fullName.message}</p>
                     )}
                   </div>
 
                   <div className="space-y-1">
-                    <label className="text-[#4A667A] uppercase font-semibold">Email Address</label>
+                    <label className="text-white/70 uppercase font-semibold">Email Address</label>
                     <input
                       type="email"
                       {...register('email')}
-                      className="w-full bg-white border border-[#B9EBFF] focus:border-[#55C7F2] focus:ring-2 focus:ring-[#55C7F2]/20 rounded-xl px-4 py-3 text-[#172B3A] shadow-sm outline-none transition-all"
+                      className="w-full reference-sub-panel border border-white/20 focus:border-[#85DCED] focus:ring-2 focus:ring-[#85DCED]/20 rounded-xl px-4 py-3 text-white shadow-sm outline-none transition-all"
                     />
                     {errors.email && (
-                      <p className="text-[#FF3D9A] text-[11px] font-bold">{errors.email.message}</p>
+                      <p className="text-[#F28A9A] text-[11px] font-bold">{errors.email.message}</p>
                     )}
                   </div>
 
                   <div className="space-y-1">
-                    <label className="text-[#4A667A] uppercase font-semibold">Mobile Number (India)</label>
+                    <label className="text-white/70 uppercase font-semibold">Mobile Number (India)</label>
                     <div className="flex">
-                      <span className="inline-flex items-center px-3 bg-[#EBF6FC] border border-r-0 border-[#B9EBFF] rounded-l-xl text-[#087EAD] font-bold">
+                      <span className="inline-flex items-center px-3 reference-sub-panel border border-r-0 border-white/20 rounded-l-xl text-[#85DCED] font-bold">
                         +91
                       </span>
                       <input
                         type="tel"
                         maxLength={10}
                         {...register('phone')}
-                        className="w-full bg-white border border-[#B9EBFF] focus:border-[#55C7F2] focus:ring-2 focus:ring-[#55C7F2]/20 rounded-r-xl px-4 py-3 text-[#172B3A] shadow-sm outline-none transition-all"
+                        className="w-full reference-sub-panel border border-white/20 focus:border-[#85DCED] focus:ring-2 focus:ring-[#85DCED]/20 rounded-r-xl px-4 py-3 text-white shadow-sm outline-none transition-all"
                       />
                     </div>
                     {errors.phone && (
-                      <p className="text-[#FF3D9A] text-[11px] font-bold">{errors.phone.message}</p>
+                      <p className="text-[#F28A9A] text-[11px] font-bold">{errors.phone.message}</p>
                     )}
                   </div>
                 </div>
@@ -239,67 +239,67 @@ export default function CheckoutPage() {
 
               {/* Section 2: Shipping Destination */}
               <div className="space-y-4">
-                <h2 className="text-sm font-mono uppercase tracking-widest text-[#087EAD] font-bold pb-2 border-b border-[#55C7F2]/25">
+                <h2 className="text-sm font-mono uppercase tracking-widest text-[#85DCED] font-bold pb-2 border-b border-white/10">
                   2. DELIVERY ADDRESS (INDIA)
                 </h2>
 
                 <div className="space-y-4 text-xs font-mono">
                   <div className="space-y-1">
-                    <label className="text-[#4A667A] uppercase font-semibold">Address Line 1 (Flat, Building, Street)</label>
+                    <label className="text-white/70 uppercase font-semibold">Address Line 1 (Flat, Building, Street)</label>
                     <input
                       type="text"
                       {...register('addressLine1')}
-                      className="w-full bg-white border border-[#B9EBFF] focus:border-[#55C7F2] focus:ring-2 focus:ring-[#55C7F2]/20 rounded-xl px-4 py-3 text-[#172B3A] shadow-sm outline-none transition-all"
+                      className="w-full reference-sub-panel border border-white/20 focus:border-[#85DCED] focus:ring-2 focus:ring-[#85DCED]/20 rounded-xl px-4 py-3 text-white shadow-sm outline-none transition-all"
                     />
                     {errors.addressLine1 && (
-                      <p className="text-[#FF3D9A] text-[11px] font-bold">{errors.addressLine1.message}</p>
+                      <p className="text-[#F28A9A] text-[11px] font-bold">{errors.addressLine1.message}</p>
                     )}
                   </div>
 
                   <div className="space-y-1">
-                    <label className="text-[#4A667A] uppercase font-semibold">Address Line 2 (Landmark, Area - Optional)</label>
+                    <label className="text-white/70 uppercase font-semibold">Address Line 2 (Landmark, Area - Optional)</label>
                     <input
                       type="text"
                       {...register('addressLine2')}
-                      className="w-full bg-white border border-[#B9EBFF] focus:border-[#55C7F2] focus:ring-2 focus:ring-[#55C7F2]/20 rounded-xl px-4 py-3 text-[#172B3A] shadow-sm outline-none transition-all"
+                      className="w-full reference-sub-panel border border-white/20 focus:border-[#85DCED] focus:ring-2 focus:ring-[#85DCED]/20 rounded-xl px-4 py-3 text-white shadow-sm outline-none transition-all"
                     />
                   </div>
 
                   <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
                     <div className="space-y-1">
-                      <label className="text-[#4A667A] uppercase font-semibold">City</label>
+                      <label className="text-white/70 uppercase font-semibold">City</label>
                       <input
                         type="text"
                         {...register('city')}
-                        className="w-full bg-white border border-[#B9EBFF] focus:border-[#55C7F2] focus:ring-2 focus:ring-[#55C7F2]/20 rounded-xl px-4 py-3 text-[#172B3A] shadow-sm outline-none transition-all"
+                        className="w-full reference-sub-panel border border-white/20 focus:border-[#85DCED] focus:ring-2 focus:ring-[#85DCED]/20 rounded-xl px-4 py-3 text-white shadow-sm outline-none transition-all"
                       />
                       {errors.city && (
-                        <p className="text-[#FF3D9A] text-[11px] font-bold">{errors.city.message}</p>
+                        <p className="text-[#F28A9A] text-[11px] font-bold">{errors.city.message}</p>
                       )}
                     </div>
 
                     <div className="space-y-1">
-                      <label className="text-[#4A667A] uppercase font-semibold">State</label>
+                      <label className="text-white/70 uppercase font-semibold">State</label>
                       <input
                         type="text"
                         {...register('state')}
-                        className="w-full bg-white border border-[#B9EBFF] focus:border-[#55C7F2] focus:ring-2 focus:ring-[#55C7F2]/20 rounded-xl px-4 py-3 text-[#172B3A] shadow-sm outline-none transition-all"
+                        className="w-full reference-sub-panel border border-white/20 focus:border-[#85DCED] focus:ring-2 focus:ring-[#85DCED]/20 rounded-xl px-4 py-3 text-white shadow-sm outline-none transition-all"
                       />
                       {errors.state && (
-                        <p className="text-[#FF3D9A] text-[11px] font-bold">{errors.state.message}</p>
+                        <p className="text-[#F28A9A] text-[11px] font-bold">{errors.state.message}</p>
                       )}
                     </div>
 
                     <div className="space-y-1">
-                      <label className="text-[#4A667A] uppercase font-semibold">PIN Code</label>
+                      <label className="text-white/70 uppercase font-semibold">PIN Code</label>
                       <input
                         type="text"
                         maxLength={6}
                         {...register('pincode')}
-                        className="w-full bg-white border border-[#B9EBFF] focus:border-[#55C7F2] focus:ring-2 focus:ring-[#55C7F2]/20 rounded-xl px-4 py-3 text-[#172B3A] shadow-sm outline-none transition-all"
+                        className="w-full reference-sub-panel border border-white/20 focus:border-[#85DCED] focus:ring-2 focus:ring-[#85DCED]/20 rounded-xl px-4 py-3 text-white shadow-sm outline-none transition-all"
                       />
                       {errors.pincode && (
-                        <p className="text-[#FF3D9A] text-[11px] font-bold">{errors.pincode.message}</p>
+                        <p className="text-[#F28A9A] text-[11px] font-bold">{errors.pincode.message}</p>
                       )}
                     </div>
                   </div>
@@ -308,47 +308,47 @@ export default function CheckoutPage() {
 
               {/* Section 3: Demo Payment Method */}
               <div className="space-y-4">
-                <h2 className="text-sm font-mono uppercase tracking-widest text-[#087EAD] font-bold pb-2 border-b border-[#55C7F2]/25">
+                <h2 className="text-sm font-mono uppercase tracking-widest text-[#85DCED] font-bold pb-2 border-b border-white/10">
                   3. SIMULATED PAYMENT SELECTION
                 </h2>
 
                 <div className="space-y-2.5 text-xs font-mono">
-                  <label className="flex items-center gap-3 p-4 rounded-2xl border border-[#55C7F2]/30 bg-white cursor-pointer hover:border-[#FF3D9A] transition-all shadow-sm">
+                  <label className="flex items-center gap-3 p-4 rounded-2xl border border-white/15 reference-sub-panel cursor-pointer hover:border-white/40 transition-all shadow-sm">
                     <input
                       type="radio"
                       value="demo_upi"
                       {...register('paymentMethod')}
-                      className="accent-[#FF3D9A]"
+                      className="accent-[#F28A9A]"
                     />
                     <div className="flex-1">
-                      <span className="font-bold text-[#172B3A] block">Instant UPI (Demo QR / VPA)</span>
-                      <span className="text-[11px] text-[#5A788D]">Simulates GPay, PhonePe, Paytm authorization</span>
+                      <span className="font-bold text-white block">Instant UPI (Demo QR / VPA)</span>
+                      <span className="text-[11px] text-white/60">Simulates GPay, PhonePe, Paytm authorization</span>
                     </div>
                   </label>
 
-                  <label className="flex items-center gap-3 p-4 rounded-2xl border border-[#55C7F2]/30 bg-white cursor-pointer hover:border-[#FF3D9A] transition-all shadow-sm">
+                  <label className="flex items-center gap-3 p-4 rounded-2xl border border-white/15 reference-sub-panel cursor-pointer hover:border-white/40 transition-all shadow-sm">
                     <input
                       type="radio"
                       value="demo_card"
                       {...register('paymentMethod')}
-                      className="accent-[#FF3D9A]"
+                      className="accent-[#F28A9A]"
                     />
                     <div className="flex-1">
-                      <span className="font-bold text-[#172B3A] block">Credit / Debit Card (Simulated Token)</span>
-                      <span className="text-[11px] text-[#5A788D]">Visa, Mastercard, RuPay test sandbox</span>
+                      <span className="font-bold text-white block">Credit / Debit Card (Simulated Token)</span>
+                      <span className="text-[11px] text-white/60">Visa, Mastercard, RuPay test sandbox</span>
                     </div>
                   </label>
 
-                  <label className="flex items-center gap-3 p-4 rounded-2xl border border-[#55C7F2]/30 bg-white cursor-pointer hover:border-[#FF3D9A] transition-all shadow-sm">
+                  <label className="flex items-center gap-3 p-4 rounded-2xl border border-white/15 reference-sub-panel cursor-pointer hover:border-white/40 transition-all shadow-sm">
                     <input
                       type="radio"
                       value="demo_cod"
                       {...register('paymentMethod')}
-                      className="accent-[#FF3D9A]"
+                      className="accent-[#F28A9A]"
                     />
                     <div className="flex-1">
-                      <span className="font-bold text-[#172B3A] block">Pay on Delivery (Simulated Cash/Card)</span>
-                      <span className="text-[11px] text-[#5A788D]">Inspect pair upon doorstep courier handover</span>
+                      <span className="font-bold text-white block">Pay on Delivery (Simulated Cash/Card)</span>
+                      <span className="text-[11px] text-white/60">Inspect pair upon doorstep courier handover</span>
                     </div>
                   </label>
                 </div>
@@ -358,13 +358,13 @@ export default function CheckoutPage() {
               <button
                 type="submit"
                 disabled={isSubmitting}
-                className="btn-hot-pink w-full py-4 rounded-xl text-xs font-mono font-bold uppercase tracking-wider flex items-center justify-center gap-2 disabled:opacity-50"
+                className="btn-reference-white w-full py-4 rounded-full text-xs font-mono font-bold uppercase tracking-wider flex items-center justify-center gap-2 disabled:opacity-50 shadow-xl"
               >
                 {isSubmitting ? (
                   <span>PROCESSING DEMO ORDER...</span>
                 ) : (
                   <>
-                    <CheckCircle2 className="w-4 h-4" />
+                    <CheckCircle2 className="w-4 h-4 text-[#073B78]" />
                     <span>CONFIRM & PLACE DEMO ORDER ({formatINR(total)})</span>
                   </>
                 )}
@@ -373,16 +373,16 @@ export default function CheckoutPage() {
           </div>
 
           {/* Right: Order Summary (5 cols) */}
-          <div className="lg:col-span-5 rounded-3xl frosted-glass-card p-6 space-y-6">
-            <h2 className="text-sm font-mono uppercase tracking-widest text-[#087EAD] font-bold pb-2 border-b border-[#55C7F2]/25">
+          <div className="lg:col-span-5 rounded-3xl reference-glass-card p-6 space-y-6">
+            <h2 className="text-sm font-mono uppercase tracking-widest text-[#85DCED] font-bold pb-2 border-b border-white/10">
               ORDER SUMMARY ({cart.reduce((s, i) => s + i.quantity, 0)})
             </h2>
 
             {/* Cart Items List */}
             <div className="space-y-4 max-h-80 overflow-y-auto pr-1">
               {cart.map((item) => (
-                <div key={item.id} className="flex gap-4 p-2 rounded-xl bg-white/70 border border-[#55C7F2]/20">
-                  <div className="relative w-16 h-16 rounded-xl overflow-hidden bg-white border border-[#55C7F2]/25 flex-shrink-0">
+                <div key={item.id} className="flex gap-4 p-2 rounded-xl reference-sub-panel border border-white/15">
+                  <div className="relative w-16 h-16 rounded-xl overflow-hidden bg-black/20 border border-white/15 flex-shrink-0">
                     <Image
                       src={item.image}
                       alt={item.name}
@@ -391,15 +391,15 @@ export default function CheckoutPage() {
                     />
                   </div>
                   <div className="flex-1 text-xs font-mono">
-                    <span className="text-[10px] text-[#087EAD] uppercase font-bold block">
+                    <span className="text-[10px] text-[#85DCED] uppercase font-bold block">
                       {item.brand}
                     </span>
-                    <h3 className="font-bold text-[#172B3A] truncate">{item.name}</h3>
-                    <div className="text-[#5A788D] mt-0.5">
+                    <h3 className="font-bold text-white truncate">{item.name}</h3>
+                    <div className="text-white/60 mt-0.5">
                       <span>{item.size}</span> • <span>Qty: {item.quantity}</span>
                     </div>
                   </div>
-                  <span className="text-xs font-mono font-bold text-[#087EAD]">
+                  <span className="text-xs font-mono font-bold text-[#85DCED]">
                     {formatINR(item.price * item.quantity)}
                   </span>
                 </div>
@@ -407,24 +407,24 @@ export default function CheckoutPage() {
             </div>
 
             {/* Calculation rows */}
-            <div className="space-y-2 pt-4 border-t border-[#55C7F2]/25 text-xs font-mono">
-              <div className="flex justify-between text-[#4A667A]">
+            <div className="space-y-2 pt-4 border-t border-white/10 text-xs font-mono">
+              <div className="flex justify-between text-white/70">
                 <span>Subtotal</span>
-                <span className="text-[#172B3A] font-bold">{formatINR(subtotal)}</span>
+                <span className="text-white font-bold">{formatINR(subtotal)}</span>
               </div>
-              <div className="flex justify-between text-[#4A667A]">
+              <div className="flex justify-between text-white/70">
                 <span>Express Courier Shipping</span>
-                <span className={shipping === 0 ? 'text-[#087EAD] font-bold' : 'text-[#172B3A]'}>
+                <span className={shipping === 0 ? 'text-[#85DCED] font-bold' : 'text-white'}>
                   {shipping === 0 ? 'FREE' : formatINR(shipping)}
                 </span>
               </div>
-              <div className="flex justify-between text-base font-bold pt-3 border-t border-[#55C7F2]/25 text-[#172B3A]">
+              <div className="flex justify-between text-base font-bold pt-3 border-t border-white/10 text-white">
                 <span>Total (INR)</span>
-                <span className="text-[#FF3D9A] text-lg font-mono">{formatINR(total)}</span>
+                <span className="text-[#F28A9A] text-lg font-mono">{formatINR(total)}</span>
               </div>
             </div>
 
-            <div className="text-[11px] font-mono text-[#5A788D] space-y-1">
+            <div className="text-[11px] font-mono text-white/60 space-y-1">
               <p>• Complimentary insured transit with doorstep verification.</p>
               <p>• Track your demonstration parcel in the Collector Account view.</p>
             </div>
