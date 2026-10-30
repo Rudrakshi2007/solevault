@@ -37,10 +37,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className="dark scroll-smooth">
-      <body className="bg-obsidian text-ivory min-h-screen flex flex-col justify-between selection:bg-lime selection:text-obsidian">
+    <html lang="en" className="scroll-smooth">
+      <body className="bg-paleBg text-darkText min-h-screen flex flex-col justify-between selection:bg-hotPink selection:text-white relative font-sans antialiased">
         <Navbar />
-        <main className="flex-1 w-full">{children}</main>
+        <main className="flex-1 w-full relative z-10">{children}</main>
         <Footer />
 
         {/* Global Modals & Drawers */}

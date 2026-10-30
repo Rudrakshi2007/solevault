@@ -4,13 +4,21 @@
 
 @layer base {
   :root {
-    --background: #050608;
-    --foreground: #F2F5F7;
+    --background: #F5FBFF;
+    --foreground: #172B3A;
+    --sky-blue: #55C7F2;
+    --pure-white: #FFFFFF;
+    --hot-pink: #FF3D9A;
+    --light-sky-blue: #B9EBFF;
+    --deep-ocean-blue: #087EAD;
+    --soft-pink: #FFB5D8;
+    --pale-background: #F5FBFF;
+    --dark-text: #172B3A;
   }
 
   body {
-    background-color: #050608;
-    color: #F2F5F7;
+    background-color: #F5FBFF;
+    color: #172B3A;
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
     overflow-x: hidden;
     -webkit-font-smoothing: antialiased;
@@ -18,26 +26,183 @@
   }
 
   ::selection {
-    background-color: #35E6D3;
-    color: #050608;
+    background-color: #FF3D9A;
+    color: #FFFFFF;
   }
 }
 
-/* Custom minimal aurora scrollbar */
+/* =========================================================================
+   SIGNATURE VISUAL TEXTURES: SKY BLUE × WHITE × HOT PINK
+   ========================================================================= */
+
+/* A. Vertical Glass Texture: Subtle vertical translucent lines across sections */
+.texture-vertical-glass {
+  background-image: repeating-linear-gradient(
+    90deg,
+    rgba(85, 199, 242, 0.05) 0px,
+    rgba(85, 199, 242, 0.05) 1px,
+    transparent 1px,
+    transparent 48px,
+    rgba(255, 61, 154, 0.03) 48px,
+    rgba(255, 61, 154, 0.03) 49px,
+    transparent 49px,
+    transparent 120px,
+    rgba(85, 199, 242, 0.07) 120px,
+    rgba(85, 199, 242, 0.07) 121px,
+    transparent 121px,
+    transparent 200px,
+    rgba(255, 255, 255, 0.4) 200px,
+    rgba(255, 255, 255, 0.4) 201px,
+    transparent 201px,
+    transparent 280px
+  );
+}
+
+/* B. Ambient Colour Diffusion: Large, blurred light sources */
+.ambient-diffusion-hero {
+  background:
+    radial-gradient(ellipse 60% 50% at 20% 20%, rgba(85, 199, 242, 0.35) 0%, transparent 60%),
+    radial-gradient(ellipse 55% 45% at 85% 25%, rgba(255, 61, 154, 0.3) 0%, transparent 55%),
+    radial-gradient(circle 400px at 50% 65%, rgba(255, 255, 255, 0.85) 0%, rgba(185, 235, 255, 0.35) 40%, transparent 70%),
+    radial-gradient(ellipse 50% 40% at 75% 85%, rgba(85, 199, 242, 0.25) 0%, transparent 50%),
+    linear-gradient(180deg, #F5FBFF 0%, #EBF6FC 100%);
+}
+
+.ambient-diffusion-showcase {
+  background:
+    radial-gradient(ellipse 50% 45% at 80% 30%, rgba(255, 61, 154, 0.22) 0%, transparent 55%),
+    radial-gradient(ellipse 60% 50% at 15% 70%, rgba(85, 199, 242, 0.28) 0%, transparent 60%),
+    radial-gradient(circle 350px at 50% 50%, rgba(255, 255, 255, 0.6) 0%, transparent 60%),
+    linear-gradient(180deg, #EBF6FC 0%, #F5FBFF 100%);
+}
+
+.ambient-diffusion-cta {
+  background:
+    radial-gradient(circle 500px at 50% 40%, rgba(255, 255, 255, 0.95) 0%, rgba(185, 235, 255, 0.4) 35%, transparent 70%),
+    radial-gradient(ellipse 60% 45% at 20% 80%, rgba(85, 199, 242, 0.35) 0%, transparent 55%),
+    radial-gradient(ellipse 60% 45% at 80% 75%, rgba(255, 61, 154, 0.3) 0%, transparent 55%),
+    linear-gradient(180deg, #F5FBFF 0%, #E0F2FA 100%);
+}
+
+/* D. Fine Grain Texture: Subtle tactile noise */
+.grain-overlay {
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.035'/%3E%3C/svg%3E");
+}
+
+/* C. Frosted Glass Surfaces */
+.frosted-glass-card {
+  background: rgba(255, 255, 255, 0.78);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(85, 199, 242, 0.3);
+  box-shadow:
+    0 18px 36px -12px rgba(8, 126, 173, 0.08),
+    0 0 20px -4px rgba(85, 199, 242, 0.12),
+    inset 0 1px 1px 0 rgba(255, 255, 255, 0.95);
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.frosted-glass-card:hover {
+  border-color: rgba(255, 61, 154, 0.5);
+  box-shadow:
+    0 24px 48px -12px rgba(255, 61, 154, 0.16),
+    0 0 32px -4px rgba(85, 199, 242, 0.24),
+    inset 0 1px 2px 0 rgba(255, 255, 255, 1);
+}
+
+.frosted-glass-nav {
+  background: rgba(255, 255, 255, 0.84);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border: 1px solid rgba(85, 199, 242, 0.32);
+  box-shadow:
+    0 12px 30px -8px rgba(8, 126, 173, 0.1),
+    0 0 20px 0 rgba(85, 199, 242, 0.12),
+    inset 0 1px 1px 0 rgba(255, 255, 255, 0.95);
+}
+
+/* =========================================================================
+   BUTTON DESIGN SYSTEM
+   ========================================================================= */
+
+/* Primary Button: Sky Blue Gradient */
+.btn-sky-gradient {
+  background: linear-gradient(135deg, #55C7F2 0%, #087EAD 100%);
+  color: #FFFFFF;
+  box-shadow: 0 8px 24px -4px rgba(85, 199, 242, 0.45);
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.btn-sky-gradient:hover {
+  filter: brightness(1.05);
+  box-shadow: 0 12px 30px -4px rgba(85, 199, 242, 0.6);
+  transform: translateY(-1px);
+}
+.btn-sky-gradient:active {
+  transform: translateY(0);
+}
+
+/* Secondary Button: White with Blue Typography */
+.btn-secondary-white {
+  background: rgba(255, 255, 255, 0.92);
+  color: #087EAD;
+  border: 1px solid rgba(85, 199, 242, 0.45);
+  box-shadow: 0 4px 14px -2px rgba(8, 126, 173, 0.08);
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.btn-secondary-white:hover {
+  background: #F5FBFF;
+  border-color: #55C7F2;
+  color: #055474;
+  box-shadow: 0 8px 20px -2px rgba(85, 199, 242, 0.25);
+  transform: translateY(-1px);
+}
+
+/* Special CTA Button: Hot Pink Gradient */
+.btn-hot-pink {
+  background: linear-gradient(135deg, #FF3D9A 0%, #FF66B2 50%, #FF3D9A 100%);
+  color: #FFFFFF;
+  box-shadow: 0 8px 24px -4px rgba(255, 61, 154, 0.45);
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.btn-hot-pink:hover {
+  filter: brightness(1.06);
+  box-shadow: 0 14px 34px -4px rgba(255, 61, 154, 0.65);
+  transform: translateY(-1px) scale(1.01);
+}
+.btn-hot-pink:active {
+  transform: translateY(0) scale(1);
+}
+
+/* =========================================================================
+   SCROLLBAR & ACCESSIBILITY
+   ========================================================================= */
+
 ::-webkit-scrollbar {
-  width: 6px;
-  height: 6px;
+  width: 8px;
+  height: 8px;
 }
 
 ::-webkit-scrollbar-track {
-  background: #050608;
+  background: #F5FBFF;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #18232C;
+  background: #B9EBFF;
+  border: 2px solid #F5FBFF;
   border-radius: 9999px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #35E6D3;
+  background: #55C7F2;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
 }

@@ -10,63 +10,103 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
+        // --- CORE BRAND PALETTE: SKY BLUE × WHITE × HOT PINK ---
+        skyBlue: {
+          DEFAULT: "#55C7F2",
+          light: "#B9EBFF",
+          pale: "#E1F6FF",
+          deep: "#087EAD",
+          hover: "#3EB8E8",
+          glow: "rgba(85, 199, 242, 0.35)",
+          dim: "rgba(85, 199, 242, 0.12)",
+        },
+        hotPink: {
+          DEFAULT: "#FF3D9A",
+          soft: "#FFB5D8",
+          pale: "#FFE8F3",
+          deep: "#D91B77",
+          hover: "#F52C8C",
+          glow: "rgba(255, 61, 154, 0.35)",
+          dim: "rgba(255, 61, 154, 0.12)",
+        },
+        oceanBlue: {
+          DEFAULT: "#087EAD",
+          deep: "#055474",
+          light: "#129BCE",
+          border: "rgba(8, 126, 173, 0.2)",
+        },
+        pureWhite: "#FFFFFF",
+        paleBg: {
+          DEFAULT: "#F5FBFF",
+          alt: "#EBF6FC",
+          card: "rgba(255, 255, 255, 0.78)",
+          glass: "rgba(255, 255, 255, 0.85)",
+        },
+        darkText: {
+          DEFAULT: "#172B3A",
+          muted: "#4A667A",
+          light: "#7B96A8",
+          subtle: "#9BB3C4",
+        },
+
+        // --- BACKWARD-COMPATIBLE SEMANTIC MAPPINGS ---
+        // Maps existing dark tokens to new luminous, atmospheric theme
         obsidian: {
-          DEFAULT: "#050608",
-          deep: "#030405",
-          elevated: "#0B1014",
+          DEFAULT: "#F5FBFF",
+          deep: "#EBF6FC",
+          elevated: "#FFFFFF",
         },
         deepSpace: {
-          DEFAULT: "#0B1014",
-          light: "#111820",
-          border: "#18232C",
+          DEFAULT: "#FFFFFF",
+          light: "#F5FBFF",
+          border: "rgba(85, 199, 242, 0.25)",
         },
         midnight: {
-          DEFAULT: "#101B2A",
-          light: "#17273D",
-          deep: "#0A111C",
+          DEFAULT: "#EBF6FC",
+          light: "#F5FBFF",
+          deep: "#E0F2FA",
         },
         auroraTeal: {
-          DEFAULT: "#35E6D3",
-          hover: "#25D2BF",
-          glow: "rgba(53, 230, 211, 0.25)",
-          dim: "rgba(53, 230, 211, 0.12)",
+          DEFAULT: "#55C7F2",
+          hover: "#3EB8E8",
+          glow: "rgba(85, 199, 242, 0.35)",
+          dim: "rgba(85, 199, 242, 0.12)",
         },
         emeraldGlow: {
-          DEFAULT: "#46F0A0",
-          hover: "#34DC8C",
-          dim: "rgba(70, 240, 160, 0.15)",
+          DEFAULT: "#FF3D9A",
+          hover: "#F52C8C",
+          dim: "rgba(255, 61, 154, 0.15)",
         },
         icyBlue: {
-          DEFAULT: "#75BFFF",
-          light: "#A4D4FF",
-          dim: "rgba(117, 191, 255, 0.15)",
+          DEFAULT: "#B9EBFF",
+          light: "#E1F6FF",
+          dim: "rgba(185, 235, 255, 0.25)",
         },
         softWhite: {
-          DEFAULT: "#F2F5F7",
-          muted: "#D1D9E0",
-          dark: "#8F9CA8",
+          DEFAULT: "#172B3A",
+          muted: "#4A667A",
+          dark: "#7B96A8",
         },
-        // Backwards compatibility for existing components
         charcoal: {
-          DEFAULT: "#0B1014",
-          light: "#111820",
-          border: "#18232C",
+          DEFAULT: "#FFFFFF",
+          light: "#F5FBFF",
+          border: "rgba(85, 199, 242, 0.22)",
         },
         ivory: {
-          DEFAULT: "#F2F5F7",
-          muted: "#D1D9E0",
-          dark: "#8F9CA8",
+          DEFAULT: "#172B3A",
+          muted: "#4A667A",
+          dark: "#7B96A8",
         },
         mutedGrey: {
-          DEFAULT: "#8F9CA8",
-          light: "#B0BCC7",
-          dark: "#4B5663",
+          DEFAULT: "#5A788D",
+          light: "#7E99AC",
+          dark: "#3B5567",
         },
         lime: {
-          DEFAULT: "#35E6D3",
-          hover: "#25D2BF",
-          dim: "rgba(53, 230, 211, 0.12)",
-          glow: "rgba(53, 230, 211, 0.25)",
+          DEFAULT: "#FF3D9A",
+          hover: "#F52C8C",
+          dim: "rgba(255, 61, 154, 0.12)",
+          glow: "rgba(255, 61, 154, 0.35)",
         },
       },
       fontFamily: {
@@ -99,10 +139,17 @@ const config: Config = {
         widest: "0.25em",
         cinematic: "0.35em",
       },
+      boxShadow: {
+        'glass': '0 20px 40px -15px rgba(8, 126, 173, 0.08), 0 0 25px -5px rgba(85, 199, 242, 0.15)',
+        'glass-hover': '0 25px 50px -12px rgba(255, 61, 154, 0.15), 0 0 35px -5px rgba(85, 199, 242, 0.25)',
+        'glow-sky': '0 0 25px rgba(85, 199, 242, 0.35)',
+        'glow-pink': '0 0 25px rgba(255, 61, 154, 0.35)',
+      },
       animation: {
         "fade-in": "fadeIn 0.5s ease-out forwards",
         "pulse-slow": "pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite",
         "float": "float 6s ease-in-out infinite",
+        "ambient-pulse": "ambientPulse 8s ease-in-out infinite alternate",
       },
       keyframes: {
         fadeIn: {
@@ -113,9 +160,14 @@ const config: Config = {
           "0%, 100%": { transform: "translateY(0px)" },
           "50%": { transform: "translateY(-10px)" },
         },
+        ambientPulse: {
+          "0%": { opacity: "0.6", transform: "scale(1)" },
+          "100%": { opacity: "0.95", transform: "scale(1.08)" },
+        },
       },
     },
   },
   plugins: [],
 };
+
 export default config;

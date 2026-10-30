@@ -46,25 +46,25 @@ export function QuickAddModal() {
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
       {/* Backdrop */}
       <div
-        className="fixed inset-0 bg-black/85 backdrop-blur-md transition-opacity"
+        className="fixed inset-0 bg-[#172B3A]/45 backdrop-blur-sm transition-opacity"
         onClick={closeQuickAdd}
       />
 
-      {/* Modal Dialog */}
-      <div className="relative z-10 w-full max-w-lg bg-obsidian border border-deepSpace-border rounded-3xl p-6 shadow-2xl overflow-hidden animate-fade-in">
+      {/* Modal Dialog: Frosted Glass */}
+      <div className="relative z-10 w-full max-w-lg bg-white/95 backdrop-blur-2xl border border-[#55C7F2]/40 rounded-3xl p-6 shadow-2xl overflow-hidden animate-fade-in text-[#172B3A]">
         {/* Header */}
-        <div className="flex items-start justify-between pb-4 border-b border-deepSpace-border">
+        <div className="flex items-start justify-between pb-4 border-b border-[#55C7F2]/25">
           <div>
-            <span className="text-[10px] font-mono tracking-widest text-auroraTeal uppercase font-bold">
-              QUICK SELECTION // AURORA
+            <span className="text-[10px] font-mono tracking-widest text-[#FF3D9A] uppercase font-bold">
+              QUICK SELECTION // SOLEVAULT
             </span>
-            <h2 className="text-lg font-bold text-softWhite line-clamp-1 mt-0.5">
+            <h2 className="text-lg font-bold text-[#172B3A] line-clamp-1 mt-0.5">
               {quickAddProduct.name}
             </h2>
           </div>
           <button
             onClick={closeQuickAdd}
-            className="p-1.5 rounded-full text-mutedGrey hover:text-softWhite hover:bg-deepSpace transition-colors"
+            className="p-1.5 rounded-xl text-[#7B96A8] hover:text-[#FF3D9A] hover:bg-[#FFE8F3] transition-colors"
             aria-label="Close modal"
           >
             <X className="w-5 h-5" />
@@ -74,8 +74,8 @@ export function QuickAddModal() {
         {/* Content Body */}
         <div className="py-5 space-y-5">
           {/* Sneaker Preview Row */}
-          <div className="flex items-center gap-4">
-            <div className="relative w-20 h-20 rounded-xl overflow-hidden bg-deepSpace border border-deepSpace-border flex-shrink-0">
+          <div className="flex items-center gap-4 bg-[#F5FBFF] p-3 rounded-2xl border border-[#55C7F2]/25">
+            <div className="relative w-20 h-20 rounded-xl overflow-hidden bg-white border border-[#55C7F2]/20 flex-shrink-0">
               <Image
                 src={quickAddProduct.images[0]}
                 alt={quickAddProduct.name}
@@ -84,13 +84,13 @@ export function QuickAddModal() {
               />
             </div>
             <div>
-              <span className="text-xs font-mono text-mutedGrey uppercase block">
+              <span className="text-xs font-mono text-[#087EAD] uppercase font-bold block">
                 {quickAddProduct.brand}
               </span>
-              <span className="text-base font-mono font-bold text-auroraTeal">
+              <span className="text-base font-mono font-bold text-[#FF3D9A]">
                 {formatINR(quickAddProduct.price)}
               </span>
-              <span className="text-[11px] font-mono text-mutedGrey-dark block">
+              <span className="text-[11px] font-mono text-[#7B96A8] block">
                 SKU: {quickAddProduct.sku}
               </span>
             </div>
@@ -99,8 +99,8 @@ export function QuickAddModal() {
           {/* Colorway Selection */}
           {quickAddProduct.colorways.length > 1 && (
             <div>
-              <span className="text-xs font-mono text-mutedGrey uppercase block mb-2">
-                Colorway: <span className="text-softWhite">{currentColor}</span>
+              <span className="text-xs font-mono text-[#4A667A] uppercase block mb-2 font-medium">
+                Colorway: <span className="text-[#172B3A] font-bold">{currentColor}</span>
               </span>
               <div className="flex flex-wrap gap-2">
                 {quickAddProduct.colorways.map((col) => (
@@ -109,12 +109,12 @@ export function QuickAddModal() {
                     onClick={() => setSelectedColor(col.name)}
                     className={`flex items-center gap-2 px-3 py-1.5 rounded-xl border text-xs font-mono transition-all ${
                       currentColor === col.name
-                        ? 'border-auroraTeal bg-auroraTeal/10 text-softWhite'
-                        : 'border-deepSpace-border hover:border-mutedGrey text-mutedGrey'
+                        ? 'border-[#FF3D9A] bg-[#FFE8F3] text-[#FF3D9A] font-bold shadow-sm'
+                        : 'border-[#55C7F2]/30 hover:border-[#55C7F2] text-[#4A667A] bg-white'
                     }`}
                   >
                     <span
-                      className="w-3 h-3 rounded-full border border-white/10"
+                      className="w-3 h-3 rounded-full border border-black/15"
                       style={{ backgroundColor: col.hex }}
                     />
                     <span>{col.name}</span>
@@ -127,13 +127,13 @@ export function QuickAddModal() {
           {/* Size Selection */}
           <div>
             <div className="flex items-center justify-between mb-2">
-              <span className="text-xs font-mono text-mutedGrey uppercase">
+              <span className="text-xs font-mono text-[#4A667A] uppercase font-medium">
                 Select Size (UK / India)
               </span>
               <button
                 type="button"
                 onClick={openSizeGuide}
-                className="text-[11px] font-mono text-auroraTeal hover:underline flex items-center gap-1"
+                className="text-[11px] font-mono text-[#087EAD] hover:text-[#FF3D9A] hover:underline flex items-center gap-1 font-semibold"
               >
                 <HelpCircle className="w-3.5 h-3.5" />
                 <span>Size Guide</span>
@@ -156,10 +156,10 @@ export function QuickAddModal() {
                     }}
                     className={`py-2 px-1 text-center rounded-xl text-xs font-mono font-bold transition-all ${
                       isSelected
-                        ? 'bg-auroraTeal text-obsidian shadow-md shadow-auroraTeal/20'
+                        ? 'bg-[#FF3D9A] text-white shadow-md shadow-[#FF3D9A]/30 border border-[#FF3D9A]'
                         : isAvailable
-                        ? 'bg-deepSpace hover:bg-deepSpace-light text-softWhite border border-deepSpace-border hover:border-auroraTeal/40'
-                        : 'bg-obsidian-deep text-mutedGrey-dark border border-deepSpace-border/40 line-through cursor-not-allowed opacity-40'
+                        ? 'bg-white hover:bg-[#F5FBFF] text-[#172B3A] border border-[#55C7F2]/30 hover:border-[#55C7F2] shadow-sm'
+                        : 'bg-[#F5FBFF] text-[#9BB3C4] border border-gray-200 line-through cursor-not-allowed opacity-40'
                     }`}
                     title={isAvailable ? `Available` : `Sold out in this size`}
                   >
@@ -170,24 +170,24 @@ export function QuickAddModal() {
             </div>
 
             {error && (
-              <p className="text-xs font-mono text-red-400 mt-2">{error}</p>
+              <p className="text-xs font-mono text-[#FF3D9A] font-bold mt-2">{error}</p>
             )}
           </div>
         </div>
 
         {/* Footer Actions */}
-        <div className="pt-4 border-t border-deepSpace-border flex gap-3">
+        <div className="pt-4 border-t border-[#55C7F2]/25 flex gap-3">
           <button
             type="button"
             onClick={closeQuickAdd}
-            className="w-1/3 py-3 rounded-xl border border-deepSpace-border text-xs font-mono uppercase tracking-wider text-mutedGrey hover:text-softWhite hover:bg-deepSpace transition-colors"
+            className="w-1/3 py-3 rounded-xl border border-[#55C7F2]/30 text-xs font-mono uppercase tracking-wider text-[#4A667A] hover:text-[#172B3A] hover:bg-[#F5FBFF] transition-colors font-semibold"
           >
             Cancel
           </button>
           <button
             type="button"
             onClick={handleAddToCart}
-            className="w-2/3 py-3 rounded-xl bg-auroraTeal hover:bg-auroraTeal-hover text-obsidian text-xs font-mono font-bold uppercase tracking-wider transition-all duration-300 flex items-center justify-center gap-2 shadow-lg shadow-auroraTeal/20"
+            className="btn-hot-pink w-2/3 py-3 rounded-xl text-xs font-mono font-bold uppercase tracking-wider flex items-center justify-center gap-2"
           >
             <Check className="w-4 h-4" />
             <span>ADD TO CART</span>

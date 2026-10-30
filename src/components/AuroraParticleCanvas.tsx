@@ -31,7 +31,7 @@ export function AuroraParticleCanvas({
 
     // 1. Scene, Camera, Renderer
     const scene = new THREE.Scene();
-    scene.fog = new THREE.FogExp2(0x050608, 0.045);
+    scene.fog = new THREE.FogExp2(0xf5fbff, 0.025);
 
     const camera = new THREE.PerspectiveCamera(55, width / height, 0.1, 100);
     camera.position.set(0, 0, 8.5);
@@ -43,10 +43,10 @@ export function AuroraParticleCanvas({
     });
     renderer.setSize(width, height);
     renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
-    renderer.setClearColor(0x050608, 0); // Transparent so background blends
+    renderer.setClearColor(0x000000, 0); // 100% Transparent so underlying atmosphere is visible
     container.appendChild(renderer.domElement);
 
-    // 2. Procedural Glow Sprite Texture (Self-contained, zero external network dependency)
+    // 2. Procedural Glow Sprite Texture (Incandescent White Core, Hot Pink Halo, Sky Blue Glow)
     const createParticleTexture = () => {
       const canvas = document.createElement('canvas');
       canvas.width = 64;
@@ -54,11 +54,11 @@ export function AuroraParticleCanvas({
       const ctx = canvas.getContext('2d');
       if (ctx) {
         const gradient = ctx.createRadialGradient(32, 32, 0, 32, 32, 32);
-        gradient.addColorStop(0, 'rgba(255, 255, 255, 1)');
-        gradient.addColorStop(0.2, 'rgba(53, 230, 211, 0.85)'); // Aurora Teal
-        gradient.addColorStop(0.5, 'rgba(70, 240, 160, 0.35)'); // Emerald Glow
-        gradient.addColorStop(0.8, 'rgba(117, 191, 255, 0.1)'); // Icy Blue
-        gradient.addColorStop(1, 'rgba(5, 6, 8, 0)');
+        gradient.addColorStop(0, 'rgba(255, 255, 255, 1)'); // Pure White core
+        gradient.addColorStop(0.2, 'rgba(255, 61, 154, 0.95)'); // Hot Pink inner radiance
+        gradient.addColorStop(0.55, 'rgba(85, 199, 242, 0.7)'); // Sky Blue diffusion
+        gradient.addColorStop(0.8, 'rgba(185, 235, 255, 0.25)'); // Light Sky Blue mist
+        gradient.addColorStop(1, 'rgba(245, 251, 255, 0)');
         ctx.fillStyle = gradient;
         ctx.fillRect(0, 0, 64, 64);
       }
@@ -68,19 +68,22 @@ export function AuroraParticleCanvas({
     };
     const particleTexture = createParticleTexture();
 
-    // 3. System 1: Glowing Dense Core (Solar / Aurora Center)
+    // 3. Three.js Color Palette Tokens: Sky Blue, Hot Pink, Pure White, Soft Pink, Deep Ocean
+    const colorSkyBlue = new THREE.Color(0x55c7f2);
+    const colorHotPink = new THREE.Color(0xff3d9a);
+    const colorPureWhite = new THREE.Color(0xffffff);
+    const colorSoftPink = new THREE.Color(0xffb5d8);
+    const colorLightSky = new THREE.Color(0xb9ebff);
+    const colorDeepOcean = new THREE.Color(0x087ead);
+
+    // 4. System 1: Glowing Dense Core (Solar / Energy Center)
     const CORE_COUNT = prefersReducedMotion ? 1200 : 2800;
     const coreGeometry = new THREE.BufferGeometry();
     const corePositions = new Float32Array(CORE_COUNT * 3);
     const coreColors = new Float32Array(CORE_COUNT * 3);
     const coreOriginalRadius = new Float32Array(CORE_COUNT);
 
-    const colorTeal = new THREE.Color(0x35e6d3);
-    const colorEmerald = new THREE.Color(0x46f0a0);
-    const colorIcy = new THREE.Color(0x75bfff);
-
     for (let i = 0; i < CORE_COUNT; i++) {
-      // Exponential spherical distribution for intense core with soft perimeter
       const u = Math.random();
       const radius = 0.2 + Math.pow(u, 1.8) * 1.6;
       const theta = Math.random() * Math.PI * 2;
@@ -95,11 +98,13 @@ export function AuroraParticleCanvas({
       corePositions[i * 3 + 2] = z;
       coreOriginalRadius[i] = radius;
 
-      // Color variation based on depth and angle
+      // Color variation: Core is pure white to hot pink to sky blue
       const mixRatio = Math.sin(theta * 2) * 0.5 + 0.5;
-      const vertexColor = colorTeal.clone().lerp(colorEmerald, mixRatio);
-      if (radius > 1.2) {
-        vertexColor.lerp(colorIcy, 0.4);
+      const vertexColor = colorHotPink.clone().lerp(colorSkyBlue, mixRatio);
+      if (radius < 0.6) {
+        vertexColor.lerp(colorPureWhite, 0.7);
+      } else if (radius > 1.2) {
+        vertexColor.lerp(colorLightSky, 0.4);
       }
       coreColors[i * 3] = vertexColor.r;
       coreColors[i * 3 + 1] = vertexColor.g;
@@ -110,10 +115,10 @@ export function AuroraParticleCanvas({
     coreGeometry.setAttribute('color', new THREE.BufferAttribute(coreColors, 3));
 
     const coreMaterial = new THREE.PointsMaterial({
-      size: 0.16,
+      size: 0.18,
       map: particleTexture,
       transparent: true,
-      opacity: 0.85,
+      opacity: 0.9,
       vertexColors: true,
       blending: THREE.AdditiveBlending,
       depthWrite: false,
@@ -121,7 +126,7 @@ export function AuroraParticleCanvas({
     const corePoints = new THREE.Points(coreGeometry, coreMaterial);
     scene.add(corePoints);
 
-    // 4. System 2: Stratified Flowing Aurora Layers (Planar Spiral Shells)
+    // 5. System 2: Stratified Flowing Aurora Layers (Planar Spiral Shells)
     const LAYER_COUNT = prefersReducedMotion ? 2500 : 5500;
     const layerGeometry = new THREE.BufferGeometry();
     const layerPositions = new Float32Array(LAYER_COUNT * 3);
@@ -146,7 +151,10 @@ export function AuroraParticleCanvas({
       layerHeights[i] = height;
       layerSpeeds[i] = speed;
 
-      const layerColor = colorTeal.clone().lerp(colorIcy, (radius - 1.4) / 4.2);
+      const layerColor = colorSkyBlue.clone().lerp(colorSoftPink, (radius - 1.4) / 4.2);
+      if (Math.random() > 0.85) {
+        layerColor.lerp(colorHotPink, 0.6);
+      }
       layerColors[i * 3] = layerColor.r;
       layerColors[i * 3 + 1] = layerColor.g;
       layerColors[i * 3 + 2] = layerColor.b;
@@ -156,10 +164,10 @@ export function AuroraParticleCanvas({
     layerGeometry.setAttribute('color', new THREE.BufferAttribute(layerColors, 3));
 
     const layerMaterial = new THREE.PointsMaterial({
-      size: 0.12,
+      size: 0.13,
       map: particleTexture,
       transparent: true,
-      opacity: 0.65,
+      opacity: 0.75,
       vertexColors: true,
       blending: THREE.AdditiveBlending,
       depthWrite: false,
@@ -167,7 +175,7 @@ export function AuroraParticleCanvas({
     const layerPoints = new THREE.Points(layerGeometry, layerMaterial);
     scene.add(layerPoints);
 
-    // 5. System 3: Magnetic Coronal Loops (Arching Toroidal Flux Lines)
+    // 6. System 3: Magnetic Coronal Loops (Arching Toroidal Flux Lines)
     const LOOP_COUNT = 10;
     const PARTICLES_PER_LOOP = prefersReducedMotion ? 100 : 220;
     const TOTAL_LOOP_PARTICLES = LOOP_COUNT * PARTICLES_PER_LOOP;
@@ -191,7 +199,9 @@ export function AuroraParticleCanvas({
     for (let l = 0; l < LOOP_COUNT; l++) {
       for (let p = 0; p < PARTICLES_PER_LOOP; p++) {
         loopProgress[pIdx] = Math.random();
-        const loopColor = colorEmerald.clone().lerp(colorTeal, Math.random());
+        const loopColor = (l % 2 === 0)
+          ? colorHotPink.clone().lerp(colorPureWhite, Math.random() * 0.4)
+          : colorSkyBlue.clone().lerp(colorDeepOcean, Math.random() * 0.3);
         loopColors[pIdx * 3] = loopColor.r;
         loopColors[pIdx * 3 + 1] = loopColor.g;
         loopColors[pIdx * 3 + 2] = loopColor.b;
@@ -203,10 +213,10 @@ export function AuroraParticleCanvas({
     loopGeometry.setAttribute('color', new THREE.BufferAttribute(loopColors, 3));
 
     const loopMaterial = new THREE.PointsMaterial({
-      size: 0.14,
+      size: 0.15,
       map: particleTexture,
       transparent: true,
-      opacity: 0.8,
+      opacity: 0.85,
       vertexColors: true,
       blending: THREE.AdditiveBlending,
       depthWrite: false,
@@ -214,7 +224,7 @@ export function AuroraParticleCanvas({
     const loopPoints = new THREE.Points(loopGeometry, loopMaterial);
     scene.add(loopPoints);
 
-    // 6. System 4: Outward Moving Coronal Streamers (Solar Wind Expansion)
+    // 7. System 4: Outward Moving Coronal Streamers (Solar Wind Expansion)
     const WIND_COUNT = prefersReducedMotion ? 800 : 1800;
     const windGeometry = new THREE.BufferGeometry();
     const windPositions = new Float32Array(WIND_COUNT * 3);
@@ -242,7 +252,9 @@ export function AuroraParticleCanvas({
       windPositions[i * 3 + 1] = dy * dist;
       windPositions[i * 3 + 2] = dz * dist;
 
-      const windCol = colorIcy.clone().lerp(colorTeal, Math.random());
+      const windCol = (i % 3 === 0)
+        ? colorHotPink.clone().lerp(colorSoftPink, Math.random())
+        : colorSkyBlue.clone().lerp(colorPureWhite, Math.random() * 0.6);
       windColors[i * 3] = windCol.r;
       windColors[i * 3 + 1] = windCol.g;
       windColors[i * 3 + 2] = windCol.b;
@@ -252,10 +264,10 @@ export function AuroraParticleCanvas({
     windGeometry.setAttribute('color', new THREE.BufferAttribute(windColors, 3));
 
     const windMaterial = new THREE.PointsMaterial({
-      size: 0.1,
+      size: 0.12,
       map: particleTexture,
       transparent: true,
-      opacity: 0.55,
+      opacity: 0.65,
       vertexColors: true,
       blending: THREE.AdditiveBlending,
       depthWrite: false,
@@ -263,7 +275,7 @@ export function AuroraParticleCanvas({
     const windPoints = new THREE.Points(windGeometry, windMaterial);
     scene.add(windPoints);
 
-    // 7. Mouse interaction parallax
+    // 8. Mouse interaction parallax
     const mouse = { x: 0, y: 0, targetX: 0, targetY: 0 };
     const handleMouseMove = (e: MouseEvent) => {
       if (!interactive) return;
@@ -272,7 +284,7 @@ export function AuroraParticleCanvas({
     };
     window.addEventListener('mousemove', handleMouseMove);
 
-    // 8. Resize Handler
+    // 9. Resize Handler
     const handleResize = () => {
       if (!container) return;
       width = container.clientWidth || window.innerWidth;
@@ -284,7 +296,7 @@ export function AuroraParticleCanvas({
     };
     window.addEventListener('resize', handleResize);
 
-    // 9. Animation Render Loop with Scroll Timeline Driver
+    // 10. Animation Render Loop with Scroll Timeline Driver
     const clock = new THREE.Clock();
 
     const animate = () => {
@@ -298,17 +310,8 @@ export function AuroraParticleCanvas({
       mouse.x += (mouse.targetX - mouse.x) * 0.05;
       mouse.y += (mouse.targetY - mouse.y) * 0.05;
 
-      // ========================================================
-      // STAGE DYNAMICS (0-20% Awaken, 20-40% Form, 40-60% Energy, 60-80% Dimension, 80-100% Reveal)
-      // ========================================================
       const energyMultiplier = 1.0 + Math.sin(scroll * Math.PI) * 1.5;
 
-      // Camera orchestration based on scroll
-      // Stage 1 (0-0.2): Centered, gentle emergence
-      // Stage 2 (0.2-0.4): Orbital pan, revealing depth
-      // Stage 3 (0.4-0.6): High velocity energy pass, closer perspective
-      // Stage 4 (0.6-0.8): Low-angle sculptural perspective
-      // Stage 5 (0.8-1.0): Settled background framing
       const targetCamZ = 8.5 - scroll * 2.8;
       const targetCamY = Math.sin(scroll * Math.PI * 1.5) * 1.8 + mouse.y * 0.4;
       const targetCamX = Math.cos(scroll * Math.PI * 1.2) * 2.2 * (scroll > 0.2 ? 1 : scroll * 5) + mouse.x * 0.5;
@@ -363,9 +366,8 @@ export function AuroraParticleCanvas({
           }
           const t = loopProgress[loopParticleIdx];
 
-          // Parametric semi-toroidal arc from base to apex and back
           const angle = cfg.angle + Math.sin(elapsedTime * 0.3) * 0.15;
-          const arcAngle = t * Math.PI; // 0 to PI
+          const arcAngle = t * Math.PI;
           const currentRadius = 1.0 + Math.sin(arcAngle) * (cfg.apexRadius - 1.0);
           const currentHeight = Math.sin(arcAngle) * (cfg.apexRadius * 0.8) * Math.cos(cfg.tilt);
 
@@ -387,7 +389,7 @@ export function AuroraParticleCanvas({
       for (let i = 0; i < WIND_COUNT; i++) {
         windDistances[i] += windSpeeds[i] * delta * 1.2 * energyMultiplier;
         if (windDistances[i] > 7.5) {
-          windDistances[i] = 0.6 + Math.random() * 0.5; // Reset near core
+          windDistances[i] = 0.6 + Math.random() * 0.5;
         }
         const d = windDistances[i];
         windPos[i * 3] = windDirections[i * 3] * d;
@@ -404,7 +406,7 @@ export function AuroraParticleCanvas({
 
     animate();
 
-    // 10. Cleanup on unmount
+    // Cleanup
     return () => {
       cancelAnimationFrame(animationFrameId);
       window.removeEventListener('mousemove', handleMouseMove);

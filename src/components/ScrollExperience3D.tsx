@@ -23,7 +23,6 @@ export function ScrollExperience3D() {
       const containerHeight = container.offsetHeight;
       const windowHeight = window.innerHeight;
 
-      // Scroll progress from 0 (top enters viewport) to 1 (bottom reaches viewport)
       const totalScrollableDistance = containerHeight - windowHeight;
       if (totalScrollableDistance <= 0) return;
 
@@ -49,7 +48,7 @@ export function ScrollExperience3D() {
       stage: '01 / 05',
       title: 'AWAKEN',
       text: 'EVERY ICON HAS AN ORIGIN.',
-      description: 'Before the leather touches pavement, energy coalesces. An illuminated particle field ignites in deep obsidian space.',
+      description: 'Before the leather touches pavement, energy coalesces. An illuminated particle cloud ignites in crystalline sky blue and pure white.',
     },
     {
       stage: '02 / 05',
@@ -61,13 +60,13 @@ export function ScrollExperience3D() {
       stage: '03 / 05',
       title: 'ENERGY',
       text: 'ENERGY IN EVERY DETAIL.',
-      description: 'Magnetic coronal flux loops stream with velocity, channeling kinetic force into every step, stitch, and sole.',
+      description: 'Magnetic coronal flux loops stream with velocity, channeling radiant hot pink kinetic force into every step, stitch, and sole.',
     },
     {
       stage: '04 / 05',
       title: 'DIMENSION',
       text: 'A DIFFERENT PERSPECTIVE.',
-      description: 'Spatial depth collapses into sculptural presence. The sneaker materializes through volumetric emerald and icy teal rays.',
+      description: 'Spatial depth collapses into sculptural presence. The sneaker materializes through volumetric sky blue and vibrant pink rays.',
     },
     {
       stage: '05 / 05',
@@ -84,36 +83,36 @@ export function ScrollExperience3D() {
     <div
       id="scroll-experience"
       ref={containerRef}
-      className="relative w-full h-[450vh] bg-obsidian"
+      className="relative w-full h-[450vh] bg-paleBg texture-vertical-glass"
     >
       {/* Sticky Fullscreen 3D Viewport */}
-      <div className="sticky top-0 h-screen w-full overflow-hidden flex flex-col justify-between p-6 sm:p-12 border-b border-deepSpace-border">
+      <div className="sticky top-0 h-screen w-full overflow-hidden flex flex-col justify-between p-6 sm:p-12 border-b border-[#55C7F2]/25">
         {/* 3D Canvas driven by the scroll progress */}
         <AuroraParticleCanvas scrollProgress={scrollProgress} className="opacity-95" />
 
-        {/* Cinematic Vignette */}
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(5,6,8,0.05)_0%,rgba(5,6,8,0.75)_100%)] pointer-events-none" />
+        {/* Luminous Ambient Background Gradient */}
+        <div className="absolute inset-0 bg-gradient-to-b from-[#F5FBFF]/70 via-[#EBF6FC]/60 to-[#F5FBFF]/80 pointer-events-none" />
 
         {/* Top Bar: Progress Indicator & Stage Counter */}
         <div className="relative z-20 flex items-center justify-between text-xs font-mono">
           <div className="flex items-center gap-3">
-            <Orbit className="w-4 h-4 text-auroraTeal animate-spin-slow" />
-            <span className="text-softWhite font-bold tracking-widest uppercase">
+            <Orbit className="w-4 h-4 text-[#FF3D9A] animate-spin-slow" />
+            <span className="text-[#172B3A] font-bold tracking-widest uppercase">
               CINEMATIC SCROLL EXPERIENCE
             </span>
           </div>
 
           <div className="flex items-center gap-4">
-            <span className="text-auroraTeal font-bold tracking-widest">
+            <span className="text-[#FF3D9A] font-bold tracking-widest">
               {currentStageData.stage}
             </span>
-            <div className="w-24 sm:w-40 h-1 bg-deepSpace-border rounded-full overflow-hidden">
+            <div className="w-24 sm:w-40 h-1.5 bg-[#B9EBFF]/50 rounded-full overflow-hidden border border-[#55C7F2]/30">
               <div
-                className="h-full bg-gradient-to-r from-auroraTeal to-emeraldGlow transition-all duration-150 ease-out"
+                className="h-full bg-gradient-to-r from-[#55C7F2] via-[#FF3D9A] to-[#087EAD] transition-all duration-150 ease-out"
                 style={{ width: `${Math.round(scrollProgress * 100)}%` }}
               />
             </div>
-            <span className="text-mutedGrey tracking-widest">
+            <span className="text-[#087EAD] font-bold tracking-widest">
               {Math.round(scrollProgress * 100)}%
             </span>
           </div>
@@ -132,15 +131,15 @@ export function ScrollExperience3D() {
                 transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
                 className="space-y-4"
               >
-                <span className="inline-block px-3 py-1 rounded-full border border-auroraTeal/40 bg-auroraTeal/10 text-auroraTeal text-xs font-mono uppercase tracking-widest font-bold">
+                <span className="inline-block px-3.5 py-1.5 rounded-full border border-[#55C7F2]/40 bg-white/85 text-[#087EAD] text-xs font-mono uppercase tracking-widest font-bold shadow-sm shadow-[#55C7F2]/10 backdrop-blur-md">
                   STAGE {currentStageData.title}
                 </span>
 
-                <h2 className="text-4xl sm:text-6xl lg:text-7xl font-black font-display tracking-tight text-softWhite uppercase leading-none">
+                <h2 className="text-4xl sm:text-6xl lg:text-7xl font-black font-display tracking-tight text-[#172B3A] uppercase leading-none drop-shadow-sm">
                   {currentStageData.text}
                 </h2>
 
-                <p className="text-sm sm:text-base font-mono text-softWhite-muted max-w-lg mx-auto leading-relaxed">
+                <p className="text-sm sm:text-base font-sans text-[#2C4659] max-w-lg mx-auto leading-relaxed font-normal">
                   {currentStageData.description}
                 </p>
               </motion.div>
@@ -153,31 +152,31 @@ export function ScrollExperience3D() {
               transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
               className="w-full flex flex-col items-center justify-center space-y-6"
             >
-              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-emeraldGlow/40 bg-emeraldGlow/10 text-emeraldGlow text-xs font-mono uppercase tracking-widest font-bold">
+              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-[#FF3D9A]/40 bg-[#FFE8F3]/80 text-[#FF3D9A] text-xs font-mono uppercase tracking-widest font-bold backdrop-blur-md shadow-sm">
                 <Sparkles className="w-3.5 h-3.5" />
                 <span>FINAL STAGE // THE ARTIFACT REVEALED</span>
               </div>
 
-              <h2 className="text-4xl sm:text-6xl font-black font-display tracking-tight text-softWhite uppercase leading-none">
+              <h2 className="text-4xl sm:text-6xl font-black font-display tracking-tight text-[#172B3A] uppercase leading-none">
                 FIND YOUR NEXT ICON.
               </h2>
 
-              {/* Emergent Sneaker Card with Aurora Rim Lighting */}
-              <div className="relative w-full max-w-xl aspect-[16/10] rounded-3xl overflow-hidden bg-deepSpace/90 border border-auroraTeal/40 shadow-2xl shadow-auroraTeal/20 p-6 flex flex-col justify-between group backdrop-blur-xl">
+              {/* Emergent Sneaker Card with Frosted Glass & Atmospheric Rim Lighting */}
+              <div className="relative w-full max-w-xl aspect-[16/10] rounded-3xl overflow-hidden frosted-glass-card p-6 flex flex-col justify-between group">
                 {/* Glow Backdrop Behind Shoe */}
-                <div className="absolute inset-0 bg-gradient-to-tr from-auroraTeal/15 via-transparent to-emeraldGlow/15 pointer-events-none" />
+                <div className="absolute inset-0 bg-gradient-to-tr from-[#55C7F2]/20 via-white/50 to-[#FF3D9A]/20 pointer-events-none" />
 
                 <div className="relative z-10 flex items-start justify-between">
                   <div>
-                    <span className="text-[11px] font-mono text-mutedGrey uppercase block">
+                    <span className="text-[11px] font-mono text-[#087EAD] uppercase font-bold block">
                       {flagshipShoe.brand}
                     </span>
-                    <h3 className="text-lg sm:text-xl font-bold font-display uppercase text-softWhite">
+                    <h3 className="text-lg sm:text-xl font-bold font-display uppercase text-[#172B3A]">
                       {flagshipShoe.name}
                     </h3>
                   </div>
 
-                  <span className="text-base font-mono font-bold text-auroraTeal px-3 py-1 rounded-lg bg-deepSpace border border-auroraTeal/30">
+                  <span className="text-base font-mono font-bold text-[#FF3D9A] px-3 py-1 rounded-xl bg-white border border-[#FF3D9A]/30 shadow-sm">
                     {formatINR(flagshipShoe.price)}
                   </span>
                 </div>
@@ -189,18 +188,18 @@ export function ScrollExperience3D() {
                     alt={flagshipShoe.name}
                     fill
                     sizes="(max-width: 768px) 100vw, 600px"
-                    className="object-contain object-center drop-shadow-[0_20px_30px_rgba(53,230,211,0.25)] transition-transform duration-500 group-hover:scale-105"
+                    className="object-contain object-center drop-shadow-[0_20px_35px_rgba(85,199,242,0.3)] transition-transform duration-500 group-hover:scale-105"
                   />
                 </div>
 
-                <div className="relative z-10 flex items-center justify-between pt-3 border-t border-deepSpace-border text-xs font-mono">
-                  <span className="text-mutedGrey">
+                <div className="relative z-10 flex items-center justify-between pt-3 border-t border-[#55C7F2]/25 text-xs font-mono">
+                  <span className="text-[#5A788D] font-medium">
                     Sizes: UK 7 - UK 12 Available
                   </span>
 
                   <Link
                     href={`/product/${flagshipShoe.slug}`}
-                    className="inline-flex items-center gap-2 bg-auroraTeal hover:bg-auroraTeal-hover text-obsidian px-5 py-2.5 rounded-lg font-bold uppercase tracking-wider transition-colors"
+                    className="btn-hot-pink inline-flex items-center gap-2 px-5 py-2.5 rounded-xl font-bold uppercase tracking-wider text-xs"
                   >
                     <span>RESERVE PAIR</span>
                     <ArrowUpRight className="w-3.5 h-3.5" />
@@ -212,9 +211,9 @@ export function ScrollExperience3D() {
         </div>
 
         {/* Bottom Bar: Interactive Scroll Hints */}
-        <div className="relative z-20 flex items-center justify-between text-[11px] font-mono text-mutedGrey">
+        <div className="relative z-20 flex items-center justify-between text-[11px] font-mono text-[#5A788D]">
           <span>Scroll down to advance stages • Scroll up to reverse timeline</span>
-          <span className="uppercase text-auroraTeal">
+          <span className="uppercase text-[#FF3D9A] font-bold">
             Stage {activeStage + 1} of 5 Active
           </span>
         </div>

@@ -31,7 +31,7 @@ export function Navbar() {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 20);
     };
-    window.addEventListener('scroll', handleScroll);
+    window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
@@ -51,46 +51,51 @@ export function Navbar() {
 
   return (
     <>
-      {/* Top Announcement Bar with Aurora Lighting */}
-      <div className="bg-deepSpace border-b border-deepSpace-border text-softWhite-muted text-[11px] font-mono tracking-widest uppercase py-2 px-4 text-center flex items-center justify-center gap-3">
-        <span className="inline-block w-1.5 h-1.5 rounded-full bg-auroraTeal shadow-[0_0_8px_#35E6D3] animate-pulse" />
-        <span>AURORA 3D EDITION // ALL PRICES IN INR (₹)</span>
-        <span className="hidden md:inline text-mutedGrey-dark">|</span>
-        <span className="hidden md:inline text-emeraldGlow">COMPLIMENTARY EXPRESS DISPATCH OVER ₹10,000</span>
+      {/* Top Announcement Bar with Sky Blue × Hot Pink atmospheric gradient */}
+      <div className="bg-gradient-to-r from-[#B9EBFF]/45 via-white/85 to-[#FFB5D8]/35 border-b border-[#55C7F2]/25 text-[#087EAD] text-[11px] font-mono tracking-widest uppercase py-2 px-4 text-center flex items-center justify-center gap-3 backdrop-blur-md relative z-50">
+        <span className="inline-block w-2 h-2 rounded-full bg-[#FF3D9A] shadow-[0_0_8px_#FF3D9A] animate-pulse" />
+        <span className="font-semibold text-[#172B3A]">
+          SKY BLUE × HOT PINK EDITION // ALL PRICES IN INR (₹)
+        </span>
+        <span className="hidden md:inline text-[#55C7F2] font-bold">|</span>
+        <span className="hidden md:inline text-[#087EAD] font-semibold">
+          COMPLIMENTARY EXPRESS DISPATCH OVER ₹10,000
+        </span>
       </div>
 
-      {/* Main Navigation Header */}
-      <header
-        className={cn(
-          'sticky top-0 z-40 transition-all duration-300 w-full',
-          isScrolled
-            ? 'bg-obsidian/90 backdrop-blur-xl border-b border-deepSpace-border/80 py-3 shadow-2xl shadow-black/90'
-            : 'bg-gradient-to-b from-obsidian via-obsidian/80 to-transparent py-5'
-        )}
-      >
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between">
+      {/* Floating Glass Navigation Header */}
+      <header className="sticky top-0 z-40 w-full px-3 sm:px-6 lg:px-8 py-2.5 transition-all duration-300">
+        <div
+          className={cn(
+            'max-w-7xl mx-auto rounded-2xl px-4 sm:px-6 py-3 flex items-center justify-between transition-all duration-300',
+            'frosted-glass-nav',
+            isScrolled
+              ? 'shadow-xl shadow-[#55C7F2]/15 border-[#55C7F2]/40 bg-white/90'
+              : 'shadow-lg shadow-[#087EAD]/08 border-[#55C7F2]/30 bg-white/80'
+          )}
+        >
           {/* Left: Mobile hamburger & Logo */}
           <div className="flex items-center gap-4">
             <button
               onClick={() => setMobileMenuOpen(true)}
-              className="lg:hidden text-softWhite p-2 -ml-2 hover:text-auroraTeal transition-colors"
+              className="lg:hidden text-[#172B3A] p-2 -ml-2 hover:text-[#55C7F2] transition-colors rounded-xl hover:bg-[#F5FBFF]"
               aria-label="Open navigation menu"
             >
-              <Menu className="w-6 h-6" />
+              <Menu className="w-5 h-5" />
             </button>
 
             <Link href="/" className="flex items-center gap-2 group">
-              <span className="font-display text-2xl sm:text-3xl tracking-tighter uppercase font-black text-softWhite group-hover:text-auroraTeal transition-colors">
-                SOLE<span className="text-auroraTeal">VAULT</span>
+              <span className="font-display text-2xl sm:text-3xl tracking-tighter uppercase font-black text-[#172B3A] group-hover:text-[#087EAD] transition-colors">
+                SOLE<span className="text-[#55C7F2] group-hover:text-[#FF3D9A] transition-colors">VAULT</span>
               </span>
-              <span className="hidden sm:inline-block text-[9px] font-mono uppercase tracking-cinematic text-mutedGrey border border-deepSpace-border px-1.5 py-0.5 rounded">
+              <span className="hidden sm:inline-block text-[9px] font-mono uppercase tracking-cinematic text-[#087EAD] bg-[#B9EBFF]/40 border border-[#55C7F2]/30 px-1.5 py-0.5 rounded-full font-bold">
                 IND
               </span>
             </Link>
           </div>
 
           {/* Center: Desktop Navigation Links */}
-          <nav className="hidden lg:flex items-center gap-7">
+          <nav className="hidden lg:flex items-center gap-6 xl:gap-7">
             {navLinks.map((link) => {
               const isActive = pathname === link.href;
               return (
@@ -98,13 +103,15 @@ export function Navbar() {
                   key={link.label}
                   href={link.href}
                   className={cn(
-                    'text-xs font-mono uppercase tracking-widest transition-all duration-200 relative py-1 hover:text-auroraTeal',
-                    isActive ? 'text-auroraTeal font-bold' : 'text-softWhite-muted'
+                    'text-xs font-mono uppercase tracking-widest transition-all duration-200 relative py-1 hover:text-[#FF3D9A]',
+                    isActive
+                      ? 'text-[#FF3D9A] font-bold'
+                      : 'text-[#2C4659] hover:text-[#087EAD]'
                   )}
                 >
                   {link.label}
                   {isActive && (
-                    <span className="absolute bottom-0 left-0 right-0 h-[2px] bg-gradient-to-r from-auroraTeal to-emeraldGlow shadow-[0_0_8px_#35E6D3]" />
+                    <span className="absolute bottom-0 left-0 right-0 h-[2px] rounded-full bg-gradient-to-r from-[#55C7F2] to-[#FF3D9A] shadow-[0_0_8px_rgba(255,61,154,0.6)]" />
                   )}
                 </Link>
               );
@@ -112,23 +119,23 @@ export function Navbar() {
           </nav>
 
           {/* Right: Actions (Search, Wishlist, Bag) */}
-          <div className="flex items-center gap-3 sm:gap-5">
+          <div className="flex items-center gap-2 sm:gap-4">
             <button
               onClick={() => setSearchOpen(!searchOpen)}
-              className="text-softWhite-muted hover:text-auroraTeal transition-colors p-2"
+              className="text-[#2C4659] hover:text-[#55C7F2] hover:bg-[#F5FBFF] transition-all p-2 rounded-xl"
               aria-label="Search catalogue"
             >
-              <Search className="w-5 h-5" />
+              <Search className="w-4 h-4 sm:w-5 sm:h-5" />
             </button>
 
             <Link
               href="/wishlist"
-              className="text-softWhite-muted hover:text-auroraTeal transition-colors p-2 relative"
+              className="text-[#2C4659] hover:text-[#FF3D9A] hover:bg-[#FFE8F3] transition-all p-2 rounded-xl relative"
               aria-label="View wishlist"
             >
-              <Heart className="w-5 h-5" />
+              <Heart className="w-4 h-4 sm:w-5 sm:h-5" />
               {wishlistCount > 0 && (
-                <span className="absolute top-1 right-1 bg-auroraTeal text-obsidian text-[10px] font-mono font-bold w-4 h-4 rounded-full flex items-center justify-center shadow-[0_0_6px_#35E6D3]">
+                <span className="absolute top-1 right-1 bg-[#FF3D9A] text-white text-[10px] font-mono font-bold w-4 h-4 rounded-full flex items-center justify-center shadow-[0_0_8px_#FF3D9A] animate-pulse">
                   {wishlistCount}
                 </span>
               )}
@@ -136,18 +143,18 @@ export function Navbar() {
 
             <button
               onClick={openCart}
-              className="text-softWhite hover:text-auroraTeal transition-colors p-2 relative flex items-center gap-2"
+              className="bg-white text-[#172B3A] hover:text-[#087EAD] hover:border-[#55C7F2] transition-all py-1.5 px-3 rounded-xl relative flex items-center gap-2 border border-[#55C7F2]/30 shadow-sm hover:shadow"
               aria-label="Open shopping bag"
             >
               <div className="relative">
-                <ShoppingBag className="w-5 h-5" />
+                <ShoppingBag className="w-4 h-4 sm:w-5 sm:h-5 text-[#55C7F2]" />
                 {cartCount > 0 && (
-                  <span className="absolute -top-1.5 -right-1.5 bg-auroraTeal text-obsidian text-[10px] font-mono font-bold w-4 h-4 rounded-full flex items-center justify-center animate-pulse shadow-[0_0_6px_#35E6D3]">
+                  <span className="absolute -top-1.5 -right-1.5 bg-[#FF3D9A] text-white text-[10px] font-mono font-bold w-4 h-4 rounded-full flex items-center justify-center shadow-[0_0_8px_#FF3D9A]">
                     {cartCount}
                   </span>
                 )}
               </div>
-              <span className="hidden md:inline text-xs font-mono tracking-wider font-semibold text-softWhite">
+              <span className="hidden md:inline text-xs font-mono tracking-wider font-bold text-[#172B3A]">
                 BAG
               </span>
             </button>
@@ -156,9 +163,9 @@ export function Navbar() {
 
         {/* Search Bar Drawer */}
         {searchOpen && (
-          <div className="w-full bg-deepSpace border-b border-deepSpace-border py-4 px-4 transition-all">
+          <div className="max-w-7xl mx-auto mt-2 bg-white/95 backdrop-blur-xl border border-[#55C7F2]/30 rounded-2xl py-3 px-4 shadow-xl shadow-[#55C7F2]/10 transition-all">
             <div className="max-w-3xl mx-auto flex items-center gap-3">
-              <Search className="w-5 h-5 text-auroraTeal" />
+              <Search className="w-5 h-5 text-[#55C7F2]" />
               <input
                 type="text"
                 placeholder="Search brand, silhouette, model (e.g. Jordan, Samba, 990v6)..."
@@ -169,27 +176,27 @@ export function Navbar() {
                     window.location.href = `/shop?q=${encodeURIComponent(searchQuery.trim())}`;
                   }
                 }}
-                className="w-full bg-transparent text-softWhite text-xs font-mono focus:outline-none placeholder:text-mutedGrey"
+                className="w-full bg-transparent text-[#172B3A] text-xs font-mono focus:outline-none placeholder:text-[#7B96A8]"
                 autoFocus
               />
               {searchQuery && (
                 <button
                   onClick={() => setSearchQuery('')}
-                  className="text-mutedGrey hover:text-softWhite text-xs font-mono uppercase"
+                  className="text-[#7B96A8] hover:text-[#172B3A] text-xs font-mono uppercase px-2"
                 >
                   Clear
                 </button>
               )}
               <Link
                 href={`/shop?q=${encodeURIComponent(searchQuery.trim())}`}
-                className="bg-auroraTeal text-obsidian px-4 py-1.5 text-xs font-mono font-bold uppercase tracking-wider rounded hover:bg-auroraTeal-hover transition-colors whitespace-nowrap shadow-[0_0_8px_#35E6D3]"
+                className="btn-sky-gradient px-4 py-1.5 text-xs font-mono font-bold uppercase tracking-wider rounded-xl whitespace-nowrap"
                 onClick={() => setSearchOpen(false)}
               >
                 Search
               </Link>
               <button
                 onClick={() => setSearchOpen(false)}
-                className="text-mutedGrey hover:text-softWhite p-1"
+                className="text-[#7B96A8] hover:text-[#FF3D9A] p-1 rounded-lg"
                 aria-label="Close search"
               >
                 <X className="w-5 h-5" />
@@ -203,49 +210,57 @@ export function Navbar() {
       {mobileMenuOpen && (
         <div className="fixed inset-0 z-50 lg:hidden">
           <div
-            className="fixed inset-0 bg-black/85 backdrop-blur-md"
+            className="fixed inset-0 bg-[#172B3A]/40 backdrop-blur-sm"
             onClick={() => setMobileMenuOpen(false)}
           />
-          <div className="fixed inset-y-0 left-0 w-full max-w-xs bg-obsidian border-r border-deepSpace-border p-6 flex flex-col justify-between overflow-y-auto">
+          <div className="fixed inset-y-0 left-0 w-full max-w-xs bg-white/95 backdrop-blur-2xl border-r border-[#55C7F2]/30 p-6 flex flex-col justify-between overflow-y-auto shadow-2xl">
             <div>
-              <div className="flex items-center justify-between pb-6 border-b border-deepSpace-border">
-                <span className="font-display text-2xl tracking-tighter uppercase font-black text-softWhite">
-                  SOLE<span className="text-auroraTeal">VAULT</span>
+              <div className="flex items-center justify-between pb-6 border-b border-[#55C7F2]/20">
+                <span className="font-display text-2xl tracking-tighter uppercase font-black text-[#172B3A]">
+                  SOLE<span className="text-[#55C7F2]">VAULT</span>
                 </span>
                 <button
                   onClick={() => setMobileMenuOpen(false)}
-                  className="text-softWhite p-2 hover:text-auroraTeal"
+                  className="text-[#172B3A] p-2 hover:text-[#FF3D9A] rounded-xl hover:bg-[#FFE8F3] transition-colors"
                   aria-label="Close menu"
                 >
                   <X className="w-6 h-6" />
                 </button>
               </div>
 
-              <div className="mt-8 flex flex-col gap-4">
-                {navLinks.map((link) => (
-                  <Link
-                    key={link.label}
-                    href={link.href}
-                    onClick={() => setMobileMenuOpen(false)}
-                    className="text-base font-mono tracking-wide text-softWhite hover:text-auroraTeal transition-colors py-1 flex items-center justify-between"
-                  >
-                    <span>{link.label}</span>
-                    <ArrowRight className="w-4 h-4 text-mutedGrey" />
-                  </Link>
-                ))}
+              <div className="mt-8 flex flex-col gap-2">
+                {navLinks.map((link) => {
+                  const isActive = pathname === link.href;
+                  return (
+                    <Link
+                      key={link.label}
+                      href={link.href}
+                      onClick={() => setMobileMenuOpen(false)}
+                      className={cn(
+                        'text-sm font-mono tracking-wide py-2.5 px-3 rounded-xl transition-all flex items-center justify-between',
+                        isActive
+                          ? 'bg-[#FFE8F3] text-[#FF3D9A] font-bold border border-[#FF3D9A]/30'
+                          : 'text-[#172B3A] hover:bg-[#F5FBFF] hover:text-[#087EAD]'
+                      )}
+                    >
+                      <span>{link.label}</span>
+                      <ArrowRight className="w-4 h-4 text-[#55C7F2]" />
+                    </Link>
+                  );
+                })}
               </div>
             </div>
 
-            <div className="pt-6 border-t border-deepSpace-border">
+            <div className="pt-6 border-t border-[#55C7F2]/20">
               <Link
                 href="/account"
                 onClick={() => setMobileMenuOpen(false)}
-                className="flex items-center gap-3 text-xs font-mono text-softWhite-muted hover:text-auroraTeal mb-4"
+                className="flex items-center gap-3 text-xs font-mono text-[#087EAD] hover:text-[#FF3D9A] mb-4 font-semibold"
               >
-                <ShieldCheck className="w-4 h-4 text-auroraTeal" />
+                <ShieldCheck className="w-4 h-4 text-[#55C7F2]" />
                 <span>Demo Collector Profile</span>
               </Link>
-              <p className="text-[11px] font-mono text-mutedGrey-dark">
+              <p className="text-[11px] font-mono text-[#7B96A8]">
                 SOLEVAULT Digital Flagship Prototype © 2026. All prices listed in INR (₹).
               </p>
             </div>
