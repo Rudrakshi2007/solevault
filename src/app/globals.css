@@ -4,133 +4,238 @@
 
 @layer base {
   :root {
-    --bright-cyan: #079FCB;
-    --electric-turquoise: #12B5D0;
-    --ocean-blue: #087EAD;
-    --deep-royal-blue: #07539B;
-    --dark-navy-blue: #073B78;
+    /* Exact Reference Palette */
+    --cyan-bright: #079FC6;
+    --turquoise-electric: #12B4CE;
+    --blue-ocean: #087EAD;
+    --blue-royal: #07559A;
+    --navy-dark: #063C78;
 
-    --soft-coral-pink: #F28A9A;
-    --vibrant-rose: #EF648F;
-    --hot-pink: #E83E9C;
-    --warm-peach: #F6A6A0;
+    --pink-coral: #F18B98;
+    --pink-peach: #F39A9E;
+    --rose-vibrant: #ED6597;
+    --magenta-hot: #D943A4;
+    --peach-warm: #F6B0A5;
 
     --pure-white: #FFFFFF;
     --soft-white: #F4FAFC;
     --translucent-cyan: rgba(133, 220, 237, 0.30);
     --frosted-white: rgba(255, 255, 255, 0.20);
-    --transparent-blue: rgba(0, 116, 174, 0.35);
+    --transparent-blue: rgba(6, 60, 120, 0.35);
   }
 
   body {
-    background-color: #073B78;
+    background-color: #063C78;
     color: #FFFFFF;
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
     overflow-x: hidden;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    min-height: 100vh;
   }
 
   ::selection {
-    background-color: #E83E9C;
+    background-color: #D943A4;
     color: #FFFFFF;
   }
 }
 
 /* =========================================================================
-   EXACT REFERENCE BACKGROUND: CYAN × TURQUOISE × CORAL PINK LUMINESCENCE
+   5-LAYER REAL CSS BACKGROUND ARCHITECTURE (EXACT REFERENCE SPECIFICATION)
    ========================================================================= */
 
-/* The signature atmospheric canvas matching the reference screenshot */
-.reference-atmosphere {
-  position: relative;
-  background-color: #073B78;
-  background-image:
-    /* Central warm pink & coral ambient light diffusion */
-    radial-gradient(ellipse 55% 45% at 46% 50%, rgba(239, 100, 143, 0.72) 0%, rgba(242, 138, 154, 0.55) 25%, rgba(232, 62, 156, 0.35) 45%, transparent 70%),
-    /* Warm peach inner core illumination */
-    radial-gradient(circle 320px at 42% 44%, rgba(246, 166, 160, 0.85) 0%, rgba(239, 100, 143, 0.4) 50%, transparent 80%),
-    /* Upper cyan / electric turquoise illumination */
-    radial-gradient(ellipse 70% 55% at 20% 15%, rgba(18, 181, 208, 0.95) 0%, rgba(7, 159, 203, 0.8) 40%, transparent 75%),
-    /* Right ocean / royal blue ambient wash */
-    radial-gradient(ellipse 65% 60% at 85% 30%, rgba(7, 83, 155, 0.9) 0%, rgba(8, 126, 173, 0.6) 45%, transparent 75%),
-    /* Bottom deep navy royal shadow gradient */
-    radial-gradient(ellipse 80% 50% at 50% 95%, rgba(4, 37, 78, 0.95) 0%, rgba(7, 59, 120, 0.75) 50%, transparent 85%),
-    /* Base directional gradient from electric turquoise to dark navy */
-    linear-gradient(135deg, #079FCB 0%, #087EAD 35%, #07539B 70%, #073B78 100%);
-  background-attachment: fixed;
+.AtmosphericBackground {
+  position: fixed;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 0;
+  background-color: #063C78;
 }
 
-/* Vertical fluted glass light-streak texture (exact reference signature) */
-.vertical-glass-streaks {
-  position: relative;
-}
-
-.vertical-glass-streaks::before {
-  content: "";
+/* LAYER 1: BASE ENVIRONMENT
+   Full-screen cyan and turquoise base with:
+   #079FC6, #12B4CE, #087EAD, #07559A, #063C78 */
+.bg-layer-1-base {
   position: absolute;
   inset: 0;
-  background-image: repeating-linear-gradient(
-    90deg,
-    rgba(255, 255, 255, 0.12) 0px,
-    rgba(255, 255, 255, 0.12) 1.5px,
-    transparent 1.5px,
-    transparent 16px,
-    rgba(133, 220, 237, 0.16) 16px,
-    rgba(133, 220, 237, 0.16) 3px,
-    transparent 3px,
-    transparent 32px
-  );
-  pointer-events: none;
-  z-index: 1;
+  background-color: #063C78;
+  background-image:
+    /* Bright cyan and electric turquoise upper-left wash */
+    radial-gradient(ellipse 65% 55% at 16% 15%, #12B4CE 0%, #079FC6 40%, rgba(8, 126, 173, 0.6) 75%, transparent 100%),
+    /* Ocean and royal blue center diagonal transition */
+    linear-gradient(135deg, #079FC6 0%, #12B4CE 20%, #087EAD 45%, #07559A 75%, #063C78 100%);
+}
+
+/* LAYER 4: DEEP BLUE SHADOWS
+   Dark navy and electric blue depth forms positioned around upper-middle
+   and middle-right areas (silhouette behind the right floating panel). */
+.bg-layer-4-shadows {
+  position: absolute;
+  inset: 0;
+  background-image:
+    /* Middle-right vertical navy form */
+    radial-gradient(ellipse 46% 68% at 78% 44%, rgba(4, 32, 70, 0.94) 0%, rgba(6, 48, 102, 0.72) 45%, transparent 80%),
+    /* Upper-middle deep royal shadow */
+    radial-gradient(ellipse 34% 45% at 58% 18%, rgba(6, 45, 95, 0.85) 0%, transparent 70%),
+    /* Lower right dark depth anchor */
+    radial-gradient(ellipse 50% 40% at 85% 90%, rgba(3, 24, 56, 0.95) 0%, transparent 80%);
+}
+
+/* LAYER 3: CENTRAL AMBIENT LIGHT
+   Large diffused pink and coral illumination from screenshot:
+   #F18B98, #F39A9E, #ED6597, #D943A4, #F6B0A5
+   Positioned around central region, slightly towards the left. */
+.bg-layer-3-ambient-light,
+.AmbientLight {
+  position: absolute;
+  inset: 0;
+  background-image:
+    /* Upper warm lime/amber transition trail above the pink */
+    radial-gradient(ellipse 38% 16% at 48% 34%, rgba(225, 242, 165, 0.32) 0%, rgba(246, 176, 165, 0.2) 40%, transparent 75%),
+    /* Core radiant rose & magenta bloom */
+    radial-gradient(ellipse 58% 34% at 42% 52%, rgba(237, 101, 151, 0.88) 0%, rgba(241, 139, 152, 0.72) 28%, rgba(217, 67, 164, 0.45) 55%, transparent 76%),
+    /* Soft coral & warm peach center core */
+    radial-gradient(ellipse 40% 22% at 36% 48%, rgba(246, 176, 165, 0.92) 0%, rgba(243, 154, 158, 0.65) 45%, transparent 80%),
+    /* Right horizontal light bleed under the right card */
+    radial-gradient(ellipse 62% 28% at 56% 58%, rgba(237, 101, 151, 0.42) 0%, rgba(217, 67, 164, 0.22) 45%, transparent 75%);
+  filter: blur(24px);
+  transform: scale(1.04);
+}
+
+/* LAYER 2: VERTICAL GLASS TEXTURE (FLUTED / REEDED GLASS)
+   The signature feature: dense vertical translucent streaks with multiple
+   overlapping scales, alternating cyan, turquoise, translucent blue, and white. */
+.bg-layer-2-vertical-glass,
+.VerticalGlassTexture {
+  position: absolute;
+  inset: 0;
+  background-image:
+    /* Fine fluted reed streaks (approx 5px pitch) */
+    repeating-linear-gradient(
+      90deg,
+      rgba(255, 255, 255, 0.16) 0px,
+      rgba(255, 255, 255, 0.16) 1px,
+      transparent 1px,
+      transparent 2.5px,
+      rgba(18, 180, 206, 0.2) 2.5px,
+      rgba(18, 180, 206, 0.2) 3.5px,
+      transparent 3.5px,
+      transparent 5px
+    ),
+    /* Medium architectural fluted lines (approx 15px pitch) */
+    repeating-linear-gradient(
+      90deg,
+      rgba(255, 255, 255, 0.12) 0px,
+      rgba(255, 255, 255, 0.12) 1.5px,
+      transparent 1.5px,
+      transparent 7px,
+      rgba(6, 60, 120, 0.25) 7px,
+      rgba(6, 60, 120, 0.25) 9.5px,
+      transparent 9.5px,
+      transparent 15px
+    ),
+    /* Wide translucent cyan & shadow columns (approx 30px pitch) */
+    repeating-linear-gradient(
+      90deg,
+      rgba(7, 159, 198, 0.14) 0px,
+      rgba(7, 159, 198, 0.14) 2.5px,
+      transparent 2.5px,
+      transparent 18px,
+      rgba(255, 255, 255, 0.08) 18px,
+      rgba(255, 255, 255, 0.08) 20px,
+      transparent 20px,
+      transparent 30px
+    );
   mix-blend-mode: overlay;
+  opacity: 0.9;
+}
+
+/* LAYER 5: ATMOSPHERIC REFLECTIONS
+   Fine translucent white reflections, subtle horizontal light streaks,
+   soft cyan overlays and gentle color transitions. */
+.bg-layer-5-reflections {
+  position: absolute;
+  inset: 0;
+  background-image:
+    /* Subtle horizontal motion/light streaks across glass */
+    repeating-linear-gradient(
+      0deg,
+      rgba(255, 255, 255, 0.035) 0px,
+      rgba(255, 255, 255, 0.035) 1px,
+      transparent 1px,
+      transparent 24px
+    ),
+    /* Central horizontal luminous glare */
+    linear-gradient(
+      180deg,
+      transparent 40%,
+      rgba(255, 255, 255, 0.09) 45%,
+      rgba(18, 180, 206, 0.14) 48%,
+      transparent 56%
+    ),
+    /* Smooth diagonal ambient sheen */
+    linear-gradient(
+      125deg,
+      rgba(255, 255, 255, 0.08) 0%,
+      transparent 30%,
+      rgba(18, 180, 206, 0.06) 65%,
+      transparent 100%
+    );
+  mix-blend-mode: soft-light;
   opacity: 0.85;
 }
 
 /* =========================================================================
-   REFERENCE GLASSMORPHISM & TRANSLUCENT SURFACES
+   GLASSMORPHISM & INTERFACE STYLING (EXACT REFERENCE GLASS)
    ========================================================================= */
 
-/* Floating pill navigation matching the reference */
+/* Floating horizontal glass navigation near top center */
+.GlassNavigation,
 .reference-nav-pill {
-  background: rgba(7, 159, 203, 0.22);
-  backdrop-filter: blur(28px);
-  -webkit-backdrop-filter: blur(28px);
-  border: 1px solid rgba(255, 255, 255, 0.28);
+  background: rgba(14, 140, 180, 0.28);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border: 1px solid rgba(255, 255, 255, 0.24);
   box-shadow:
-    0 15px 35px -5px rgba(4, 37, 78, 0.4),
-    0 0 25px 0 rgba(18, 181, 208, 0.25),
-    inset 0 1px 1px 0 rgba(255, 255, 255, 0.4);
+    0 16px 36px -6px rgba(3, 24, 56, 0.45),
+    0 0 25px 0 rgba(18, 180, 206, 0.2),
+    inset 0 1px 1px 0 rgba(255, 255, 255, 0.45);
 }
 
-/* Translucent cyan-blue content card */
+/* Translucent cyan-blue floating information panel */
+.GlassPanel,
 .reference-glass-card {
-  background: rgba(7, 83, 155, 0.32);
-  backdrop-filter: blur(28px);
-  -webkit-backdrop-filter: blur(28px);
-  border: 1px solid rgba(255, 255, 255, 0.22);
+  background: rgba(7, 50, 100, 0.42);
+  backdrop-filter: blur(25px);
+  -webkit-backdrop-filter: blur(25px);
+  border: 1px solid rgba(255, 255, 255, 0.18);
   box-shadow:
-    0 24px 50px -12px rgba(4, 37, 78, 0.5),
-    0 0 30px -5px rgba(7, 159, 203, 0.25),
-    inset 0 1px 1px 0 rgba(255, 255, 255, 0.3);
+    0 24px 50px -12px rgba(3, 24, 56, 0.55),
+    0 0 35px -5px rgba(7, 159, 198, 0.2),
+    inset 0 1px 1px 0 rgba(255, 255, 255, 0.35);
   transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
+.GlassPanel:hover,
 .reference-glass-card:hover {
-  background: rgba(7, 83, 155, 0.42);
-  border-color: rgba(255, 255, 255, 0.4);
+  background: rgba(7, 50, 100, 0.52);
+  border-color: rgba(255, 255, 255, 0.32);
   box-shadow:
-    0 30px 60px -12px rgba(4, 37, 78, 0.65),
-    0 0 40px -5px rgba(239, 100, 143, 0.35),
+    0 32px 64px -12px rgba(3, 24, 56, 0.65),
+    0 0 45px -5px rgba(237, 101, 151, 0.3),
     inset 0 1px 2px 0 rgba(255, 255, 255, 0.45);
 }
 
-/* Inner sub-card panel */
+/* Inner sub-card panel inside the floating right container */
+.GlassCard,
 .reference-sub-panel {
-  background: rgba(7, 59, 120, 0.45);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  border: 1px solid rgba(255, 255, 255, 0.15);
+  background: rgba(6, 35, 75, 0.45);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  border: 1px solid rgba(255, 255, 255, 0.12);
   box-shadow: inset 0 1px 1px 0 rgba(255, 255, 255, 0.15);
 }
 
@@ -138,49 +243,49 @@
    BUTTON DESIGN SYSTEM (EXACT REFERENCE BUTTONS)
    ========================================================================= */
 
-/* Primary Pill: Pure White with Navy Typography */
+/* Primary Pill: Pure White with Navy Typography (Try for Free ↗) */
 .btn-reference-white {
   background: #FFFFFF;
-  color: #073B78;
-  font-weight: 700;
-  border: 1px solid rgba(255, 255, 255, 0.9);
-  box-shadow: 0 10px 25px -4px rgba(255, 255, 255, 0.45), 0 0 20px rgba(18, 181, 208, 0.3);
+  color: #063C78;
+  font-weight: 600;
+  border: 1px solid rgba(255, 255, 255, 0.95);
+  box-shadow:
+    0 10px 25px -4px rgba(255, 255, 255, 0.4),
+    0 0 20px rgba(18, 180, 206, 0.25);
   transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
 }
 .btn-reference-white:hover {
   background: #F4FAFC;
   transform: translateY(-1px) scale(1.02);
-  box-shadow: 0 14px 30px -4px rgba(255, 255, 255, 0.6), 0 0 25px rgba(255, 255, 255, 0.5);
+  box-shadow:
+    0 14px 30px -4px rgba(255, 255, 255, 0.55),
+    0 0 25px rgba(255, 255, 255, 0.45);
 }
 
-/* Secondary Pill: Translucent Cyan-Glass with White Typography */
+/* Secondary Link / Glass Button (Schedule Demo ↗) */
 .btn-reference-glass {
-  background: rgba(255, 255, 255, 0.12);
+  background: transparent;
   color: #FFFFFF;
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  border: 1px solid rgba(255, 255, 255, 0.3);
-  box-shadow: 0 8px 20px -4px rgba(0, 0, 0, 0.2);
+  font-weight: 500;
   transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
 }
 .btn-reference-glass:hover {
-  background: rgba(255, 255, 255, 0.22);
-  border-color: rgba(255, 255, 255, 0.5);
+  color: rgba(255, 255, 255, 0.85);
   transform: translateY(-1px);
 }
 
 /* Vibrant Rose & Pink Pill */
 .btn-reference-pink {
-  background: linear-gradient(135deg, #EF648F 0%, #E83E9C 100%);
+  background: linear-gradient(135deg, #ED6597 0%, #D943A4 100%);
   color: #FFFFFF;
-  font-weight: 700;
-  box-shadow: 0 10px 30px -4px rgba(232, 62, 156, 0.55), 0 0 25px rgba(239, 100, 143, 0.4);
+  font-weight: 600;
+  box-shadow: 0 10px 30px -4px rgba(217, 67, 164, 0.55), 0 0 25px rgba(237, 101, 151, 0.4);
   transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
 }
 .btn-reference-pink:hover {
   filter: brightness(1.08);
   transform: translateY(-1px) scale(1.02);
-  box-shadow: 0 14px 36px -4px rgba(232, 62, 156, 0.75), 0 0 35px rgba(239, 100, 143, 0.6);
+  box-shadow: 0 14px 36px -4px rgba(217, 67, 164, 0.75), 0 0 35px rgba(237, 101, 151, 0.6);
 }
 
 /* =========================================================================
@@ -193,17 +298,17 @@
 }
 
 ::-webkit-scrollbar-track {
-  background: #073B78;
+  background: #063C78;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #079FCB;
+  background: #079FC6;
   border-radius: 9999px;
   border: 1px solid rgba(255, 255, 255, 0.2);
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #EF648F;
+  background: #ED6597;
 }
 
 @media (prefers-reduced-motion: reduce) {

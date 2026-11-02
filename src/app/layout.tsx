@@ -5,6 +5,7 @@ import { Footer } from '@/components/Footer';
 import { CartDrawer } from '@/components/CartDrawer';
 import { QuickAddModal } from '@/components/QuickAddModal';
 import { SizeGuideModal } from '@/components/SizeGuideModal';
+import { AtmosphericBackground } from '@/components/AtmosphericBackground';
 
 export const metadata: Metadata = {
   title: 'SOLEVAULT | Find Your Next Obsession',
@@ -38,10 +39,16 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className="scroll-smooth">
-      <body className="reference-atmosphere vertical-glass-streaks text-white min-h-screen flex flex-col justify-between selection:bg-[#E83E9C] selection:text-white relative font-sans antialiased">
-        <Navbar />
-        <main className="flex-1 w-full relative z-10">{children}</main>
-        <Footer />
+      <body className="text-white min-h-screen flex flex-col justify-between selection:bg-[#D943A4] selection:text-white relative font-sans antialiased bg-[#063C78]">
+        {/* 5-Layer Real CSS Atmospheric Background */}
+        <AtmosphericBackground />
+
+        {/* Foreground Content Stack */}
+        <div className="relative z-10 flex flex-col min-h-screen justify-between">
+          <Navbar />
+          <main className="flex-1 w-full relative">{children}</main>
+          <Footer />
+        </div>
 
         {/* Global Modals & Drawers */}
         <CartDrawer />

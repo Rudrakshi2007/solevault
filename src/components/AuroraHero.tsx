@@ -2,18 +2,17 @@
 
 import React from 'react';
 import Link from 'next/link';
-import Image from 'next/image';
 import {
   ArrowUpRight,
-  Sparkles,
   MapPin,
-  CheckCircle2,
+  Clock,
+  BarChart2,
   ShieldCheck,
   Zap,
-  Activity,
+  Calendar,
+  Award,
   Layers,
 } from 'lucide-react';
-import { AuroraParticleCanvas } from './AuroraParticleCanvas';
 import { PRODUCTS } from '@/data/products';
 import { formatINR } from '@/lib/utils';
 
@@ -21,171 +20,215 @@ export function AuroraHero() {
   const shoe1 = PRODUCTS[0]; // Air Jordan 1 Lost & Found
   const shoe2 = PRODUCTS[2]; // New Balance 990v6
 
-  const scrollToCollection = () => {
-    const target = document.getElementById('featured-showcase');
-    if (target) {
-      target.scrollIntoView({ behavior: 'smooth' });
-    }
-  };
-
   return (
-    <section className="relative w-full min-h-[92vh] lg:min-h-[95vh] flex flex-col justify-between overflow-hidden select-none px-4 sm:px-8 lg:px-12 pt-10 pb-8">
-      {/* 3D Ambient Particle Cloud in Cyan, White & Coral */}
-      <AuroraParticleCanvas scrollProgress={0.05} className="opacity-75" />
-
-      {/* Main Grid: Left Headline & CTA + Right Reference-Matched Glass Panel */}
-      <div className="relative z-10 max-w-7xl mx-auto w-full my-auto py-12 grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+    <section className="relative w-full min-h-[calc(100vh-80px)] flex flex-col justify-between select-none px-4 sm:px-8 lg:px-12 pt-6 pb-6 z-10">
+      {/* Main Hero Container */}
+      <div className="max-w-7xl mx-auto w-full my-auto py-8 sm:py-12 grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-center">
         
-        {/* Left Column (7 cols): Clean, Large, Elegant Typography */}
-        <div className="lg:col-span-7 space-y-8">
+        {/* Left Column (7 cols): Exact Lightweight White Headline & Supporting Copy */}
+        <div className="lg:col-span-7 space-y-6 lg:space-y-8 pr-0 lg:pr-6">
           <div className="space-y-4 max-w-2xl">
-            <h1 className="text-5xl sm:text-7xl lg:text-[5.5rem] font-sans font-normal tracking-tight text-white leading-[1.03]">
+            <h1 className="text-5xl sm:text-7xl lg:text-[5.4rem] font-sans font-light tracking-tight text-white leading-[1.04]">
               Your Personal <br />
-              <span className="font-semibold text-white">Footwear Sanctuary</span>
+              <span className="font-normal text-white">Footwear Companion</span>
             </h1>
 
-            <p className="text-base sm:text-lg text-white/85 max-w-xl leading-relaxed font-light">
-              Meet your personal digital sneaker vault — a comprehensive luxury platform offering tools for discovering archival grails, tracking verified releases, and curating your rotation.
+            <p className="text-sm sm:text-base text-white/85 max-w-xl leading-relaxed font-light">
+              Meet your personal digital sneaker companion — a comprehensive luxury platform
+              offering tools for discovering archival grails, tracking verified releases,
+              and curating your rotation.
             </p>
           </div>
 
-          {/* Action Buttons matching reference style */}
-          <div className="flex flex-wrap items-center gap-4 pt-2">
+          {/* Primary Action Row on Left (Mobile & Tablet) */}
+          <div className="flex lg:hidden items-center gap-5 pt-2">
             <Link
               href="/shop"
-              className="btn-reference-white inline-flex items-center justify-center gap-2 px-8 py-3.5 rounded-full text-xs uppercase tracking-wider"
+              className="btn-reference-white inline-flex items-center gap-2 px-7 py-3 rounded-full text-xs font-semibold tracking-wide shadow-lg"
             >
-              <span>Explore Collection</span>
-              <ArrowUpRight className="w-4 h-4" />
+              <span>Try for Free</span>
+              <ArrowUpRight className="w-3.5 h-3.5" />
             </Link>
 
-            <button
-              onClick={scrollToCollection}
-              className="btn-reference-glass inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-full text-xs uppercase tracking-wider font-medium"
+            <Link
+              href="/shop"
+              className="btn-reference-glass inline-flex items-center gap-1.5 text-xs font-medium text-white/90 hover:text-white"
             >
-              <span>Schedule Drop Preview</span>
-              <ArrowUpRight className="w-4 h-4 text-white/70" />
-            </button>
+              <span>Schedule Demo</span>
+              <ArrowUpRight className="w-3.5 h-3.5" />
+            </Link>
           </div>
         </div>
 
-        {/* Right Column (5 cols): Exact Translucent Glass Floating Panel from Reference */}
-        <div className="lg:col-span-5 relative">
-          <div className="w-full max-w-md mx-auto rounded-3xl reference-glass-card p-6 sm:p-7 space-y-5">
+        {/* Right Column (5 cols): Exact Translucent Glass Floating Panel & Actions from Reference */}
+        <div className="lg:col-span-5 flex flex-col items-center lg:items-end space-y-6">
+          
+          {/* Main Floating Glass Panel */}
+          <div className="w-full max-w-[420px] rounded-[28px] GlassPanel reference-glass-card p-6 sm:p-7 space-y-4">
             
-            {/* Top pill notch handle */}
-            <div className="w-12 h-1 rounded-full bg-white/40 mx-auto" />
+            {/* Top White Pill Notch Handle */}
+            <div className="w-12 h-1 rounded-full bg-white/70 mx-auto -mt-1 mb-3" />
 
-            {/* Location / Meta header */}
-            <div className="flex items-center gap-2 text-[11px] font-sans text-white/75">
-              <MapPin className="w-3.5 h-3.5 text-[#12B5D0]" />
-              <span className="truncate">Archive Vault 01, High Street, New Delhi, IND</span>
+            {/* Location Tag Row */}
+            <div className="flex items-center gap-2 text-xs font-sans text-white/80">
+              <MapPin className="w-3.5 h-3.5 text-white/70 flex-shrink-0" />
+              <span className="truncate">23 Sneaker Row, Vault District, BLR 560038</span>
             </div>
 
-            {/* Sub-panel 1 (Mondays style schedule / Featured Item) */}
-            <div className="rounded-2xl reference-sub-panel p-4 space-y-3">
+            {/* Sub-Card 1: Mondays / Grail Schedule */}
+            <div className="rounded-2xl GlassCard reference-sub-panel p-4 space-y-3">
               <div className="flex items-center justify-between text-xs text-white">
-                <span className="font-bold text-sm tracking-tight">{shoe1.name}</span>
-                <span className="flex items-center gap-1 text-[11px] text-[#85DCED] font-mono">
-                  <Sparkles className="w-3 h-3 text-[#EF648F]" />
-                  <span>Grail Tier</span>
+                <span className="font-semibold text-sm tracking-tight">Mondays</span>
+                <span className="flex items-center gap-1.5 text-[11px] text-white/75 font-sans">
+                  <BarChart2 className="w-3.5 h-3.5 text-[#12B4CE]" />
+                  <span>Beginners</span>
                 </span>
               </div>
 
-              <div className="flex items-center justify-between text-xs text-white/80 font-mono">
+              {/* Time Interval Row */}
+              <div className="flex items-center justify-between text-xs text-white/90 font-sans pt-1">
                 <div>
-                  <span className="text-[10px] text-white/50 block">STATUS</span>
-                  <span className="text-white font-bold">{formatINR(shoe1.price)}</span>
+                  <span className="text-[10px] text-white/55 block font-light">Start</span>
+                  <span className="font-semibold text-white">12:00 AM</span>
                 </div>
-                <div>
-                  <span className="text-[10px] text-white/50 block">SIZING</span>
-                  <span>UK 7 - UK 12</span>
+
+                <div className="flex items-center gap-1 px-2.5 py-1 rounded-full bg-white/10 text-white/85 text-[11px] font-sans border border-white/15">
+                  <Clock className="w-3 h-3 text-white/70" />
+                  <span>2h</span>
                 </div>
-                <div>
-                  <span className="text-[10px] text-white/50 block">ALLOCATION</span>
-                  <span className="text-[#85DCED] font-bold">Verified</span>
+
+                <div className="text-right">
+                  <span className="text-[10px] text-white/55 block font-light">End</span>
+                  <span className="font-semibold text-white">14:00 AM</span>
                 </div>
+              </div>
+
+              {/* Exact Timeline Tick Marks Ruler */}
+              <div className="pt-2 border-t border-white/10 flex justify-between items-end h-3 px-1 opacity-45">
+                {[...Array(24)].map((_, i) => (
+                  <div
+                    key={i}
+                    className={`w-[1px] bg-white ${
+                      i % 6 === 0 ? 'h-2.5 bg-white' : i % 2 === 0 ? 'h-2 bg-white/70' : 'h-1.5 bg-white/40'
+                    }`}
+                  />
+                ))}
               </div>
             </div>
 
-            {/* Sub-panel 2 (Thursdays style schedule / Featured Item 2) */}
-            <div className="rounded-2xl reference-sub-panel p-4 space-y-3">
+            {/* Sub-Card 2: Thursdays / Advanced Schedule */}
+            <div className="rounded-2xl GlassCard reference-sub-panel p-4 space-y-3">
               <div className="flex items-center justify-between text-xs text-white">
-                <span className="font-bold text-sm tracking-tight">{shoe2.name}</span>
-                <span className="flex items-center gap-1 text-[11px] text-[#85DCED] font-mono">
-                  <Activity className="w-3 h-3 text-[#12B5D0]" />
-                  <span>Aerospace</span>
+                <span className="font-semibold text-sm tracking-tight">Thursdays</span>
+                <span className="flex items-center gap-1.5 text-[11px] text-white/75 font-sans">
+                  <BarChart2 className="w-3.5 h-3.5 text-[#12B4CE]" />
+                  <span>Advanced</span>
                 </span>
               </div>
 
-              <div className="flex items-center justify-between text-xs text-white/80 font-mono">
+              {/* Time Interval Row */}
+              <div className="flex items-center justify-between text-xs text-white/90 font-sans pt-1">
                 <div>
-                  <span className="text-[10px] text-white/50 block">PRICE</span>
-                  <span className="text-white font-bold">{formatINR(shoe2.price)}</span>
+                  <span className="text-[10px] text-white/55 block font-light">Start</span>
+                  <span className="font-semibold text-white">13:00 AM</span>
                 </div>
-                <div>
-                  <span className="text-[10px] text-white/50 block">SIZING</span>
-                  <span>UK 8 - UK 11</span>
+
+                <div className="flex items-center gap-1 px-2.5 py-1 rounded-full bg-white/10 text-white/85 text-[11px] font-sans border border-white/15">
+                  <Clock className="w-3 h-3 text-white/70" />
+                  <span>2h</span>
                 </div>
-                <div>
-                  <span className="text-[10px] text-white/50 block">DISPATCH</span>
-                  <span className="text-[#EF648F] font-bold">Express 48h</span>
+
+                <div className="text-right">
+                  <span className="text-[10px] text-white/55 block font-light">End</span>
+                  <span className="font-semibold text-white">15:00 AM</span>
                 </div>
               </div>
+
+              {/* Exact Timeline Tick Marks Ruler */}
+              <div className="pt-2 border-t border-white/10 flex justify-between items-end h-3 px-1 opacity-45">
+                {[...Array(24)].map((_, i) => (
+                  <div
+                    key={i}
+                    className={`w-[1px] bg-white ${
+                      i % 6 === 0 ? 'h-2.5 bg-white' : i % 2 === 0 ? 'h-2 bg-white/70' : 'h-1.5 bg-white/40'
+                    }`}
+                  />
+                ))}
+              </div>
             </div>
+          </div>
+
+          {/* Action Buttons: Positioned directly beneath right panel as in screenshot */}
+          <div className="hidden lg:flex items-center justify-end gap-5 w-full max-w-[420px] pt-1">
+            <Link
+              href="/shop"
+              className="btn-reference-white inline-flex items-center justify-center gap-2 px-7 py-3 rounded-full text-xs font-semibold tracking-wide shadow-lg"
+            >
+              <span>Try for Free</span>
+              <ArrowUpRight className="w-3.5 h-3.5" />
+            </Link>
+
+            <Link
+              href="/shop"
+              className="btn-reference-glass inline-flex items-center gap-1.5 text-xs font-medium text-white/95 hover:text-white"
+            >
+              <span>Schedule Demo</span>
+              <ArrowUpRight className="w-3.5 h-3.5" />
+            </Link>
           </div>
         </div>
       </div>
 
-      {/* Bottom 5-Column Feature Strip matching reference screenshot */}
-      <div className="relative z-10 max-w-7xl mx-auto w-full pt-8 border-t border-white/20 grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-6 text-xs text-white/80">
-        <div className="space-y-1">
-          <div className="flex items-center gap-2 text-[#12B5D0] font-semibold text-xs">
-            <ShieldCheck className="w-4 h-4 text-[#12B5D0]" />
-            <span>Verified Authenticity</span>
+      {/* Bottom 5-Column Feature Strip matching reference screenshot exactly */}
+      <div className="max-w-7xl mx-auto w-full pt-6 border-t border-white/15 grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-6 text-xs text-white/80">
+        
+        {/* Feature 1 */}
+        <div className="space-y-1.5">
+          <div className="w-6 h-6 rounded-lg bg-[#12B4CE]/20 border border-[#12B4CE]/30 flex items-center justify-center text-[#12B4CE]">
+            <ShieldCheck className="w-3.5 h-3.5" />
           </div>
-          <p className="text-[11px] text-white/65 leading-snug">
-            Expertly vetted footwear architecture and lineage
+          <p className="text-[12px] text-white/85 leading-snug font-light">
+            Elite coaching for all ages and skill levels
           </p>
         </div>
 
-        <div className="space-y-1">
-          <div className="flex items-center gap-2 text-[#85DCED] font-semibold text-xs">
-            <Zap className="w-4 h-4 text-[#85DCED]" />
-            <span>State-of-the-Art Core</span>
+        {/* Feature 2 */}
+        <div className="space-y-1.5">
+          <div className="w-6 h-6 rounded-lg bg-white/10 border border-white/15 flex items-center justify-center text-white/90">
+            <Zap className="w-3.5 h-3.5" />
           </div>
-          <p className="text-[11px] text-white/65 leading-snug">
-            Precision damping and aerospace FuelCell engineering
+          <p className="text-[12px] text-white/85 leading-snug font-light">
+            State-of-the-art facilities and equipment
           </p>
         </div>
 
-        <div className="space-y-1">
-          <div className="flex items-center gap-2 text-[#F28A9A] font-semibold text-xs">
-            <Layers className="w-4 h-4 text-[#F28A9A]" />
-            <span>UK / India Sizing</span>
+        {/* Feature 3 */}
+        <div className="space-y-1.5">
+          <div className="w-6 h-6 rounded-lg bg-white/10 border border-white/15 flex items-center justify-center text-white/90">
+            <Calendar className="w-3.5 h-3.5" />
           </div>
-          <p className="text-[11px] text-white/65 leading-snug">
-            Tailored international size conversion and half-sizes
+          <p className="text-[12px] text-white/85 leading-snug font-light">
+            Personalized training plans tailored to your goals
           </p>
         </div>
 
-        <div className="space-y-1">
-          <div className="flex items-center gap-2 text-[#85DCED] font-semibold text-xs">
-            <CheckCircle2 className="w-4 h-4 text-[#85DCED]" />
-            <span>Archival Track Record</span>
+        {/* Feature 4 */}
+        <div className="space-y-1.5">
+          <div className="w-6 h-6 rounded-lg bg-white/10 border border-white/15 flex items-center justify-center text-white/90">
+            <Award className="w-3.5 h-3.5" />
           </div>
-          <p className="text-[11px] text-white/65 leading-snug">
-            Curated allocations for discerning collectors
+          <p className="text-[12px] text-white/85 leading-snug font-light">
+            Proven track record of student success
           </p>
         </div>
 
-        <div className="space-y-1 col-span-2 sm:col-span-1">
-          <div className="flex items-center gap-2 text-[#12B5D0] font-semibold text-xs">
-            <Sparkles className="w-4 h-4 text-[#12B5D0]" />
-            <span>Express Dispatch</span>
+        {/* Feature 5 */}
+        <div className="space-y-1.5 col-span-2 sm:col-span-1">
+          <div className="w-6 h-6 rounded-lg bg-white/10 border border-white/15 flex items-center justify-center text-white/90">
+            <Layers className="w-3.5 h-3.5" />
           </div>
-          <p className="text-[11px] text-white/65 leading-snug">
-            Insured direct-to-door courier across India
+          <p className="text-[12px] text-white/85 leading-snug font-light">
+            Comprehensive programs for beginners to advanced
           </p>
         </div>
       </div>
