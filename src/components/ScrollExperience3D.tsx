@@ -5,7 +5,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ArrowUpRight, Sparkles, Orbit } from 'lucide-react';
-import { AuroraParticleCanvas } from './AuroraParticleCanvas';
+
 import { formatINR } from '@/lib/utils';
 import { PRODUCTS } from '@/data/products';
 
@@ -85,7 +85,7 @@ export function ScrollExperience3D() {
     >
       {/* Sticky Fullscreen Viewport */}
       <div className="sticky top-0 h-screen w-full overflow-hidden flex flex-col justify-between p-6 sm:p-12">
-        <AuroraParticleCanvas scrollProgress={scrollProgress} className="opacity-80" />
+        
 
         {/* Top Bar: Progress Indicator & Stage Counter */}
         <div className="relative z-20 flex items-center justify-between text-xs font-mono">

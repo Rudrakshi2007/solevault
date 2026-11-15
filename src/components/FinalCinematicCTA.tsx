@@ -3,13 +3,13 @@
 import React from 'react';
 import Link from 'next/link';
 import { ArrowUpRight, Sparkles } from 'lucide-react';
-import { AuroraParticleCanvas } from './AuroraParticleCanvas';
+
 
 export function FinalCinematicCTA() {
   return (
     <section className="relative w-full py-32 sm:py-48 overflow-hidden border-b border-white/10">
       {/* Particle System */}
-      <AuroraParticleCanvas scrollProgress={0.9} className="opacity-60" />
+      
 
       {/* Atmospheric center bloom */}
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(242,138,154,0.18)_0%,transparent_70%)] pointer-events-none" />
