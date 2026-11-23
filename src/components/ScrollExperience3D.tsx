@@ -70,12 +70,12 @@ export function ScrollExperience3D() {
       stage: '05 / 05',
       title: 'REVEAL',
       text: 'FIND YOUR NEXT ICON.',
-      description: 'The physical artifact arrives. Pure archival court heritage fused with modern streetwear divinity.',
+      description: 'The physical artifact arrives. 1970s Japanese track heritage fused with minimalist monochrome streetwear divinity.',
     },
   ];
 
   const currentStageData = stages[activeStage];
-  const flagshipShoe = PRODUCTS[0]; // Air Jordan 1 Lost & Found
+  const flagshipShoe = PRODUCTS[0]; // Onitsuka Tiger Serrano, Black & White Edition
 
   return (
     <div
@@ -184,7 +184,7 @@ export function ScrollExperience3D() {
 
                 <div className="relative z-10 flex items-center justify-between pt-3 border-t border-white/15 text-xs font-mono">
                   <span className="text-white/70">
-                    Sizes: UK 7 - UK 12 Available
+                    Sizes: UK 6 - UK 11 Available
                   </span>
 
                   <Link

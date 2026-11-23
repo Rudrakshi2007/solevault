@@ -11,6 +11,8 @@ import {
   Heart,
   ArrowRight,
   ShoppingBag,
+  Moon,
+  Sparkles,
 } from 'lucide-react';
 import { useVaultStore } from '@/lib/store';
 import { cn } from '@/lib/utils';
@@ -33,7 +35,8 @@ export function Navbar() {
 
   const navLinks = [
     { label: 'Home', href: '/', hasDot: true },
-    { label: 'Services +', href: '/shop?category=sneakers', hasGlow: true },
+    { label: 'Night Market', href: '/night-market', isNightMarket: true, hasGlow: true },
+    { label: 'Services +', href: '/shop?category=sneakers' },
     { label: 'Product', href: '/shop' },
     { label: 'About us', href: '/account' },
   ];
@@ -64,7 +67,7 @@ export function Navbar() {
           </Link>
 
           {/* Top-Center: Floating Rounded Pill Navigation Container */}
-          <nav className="hidden md:flex items-center gap-8 px-7 py-2.5 rounded-full GlassNavigation reference-nav-pill">
+          <nav className="hidden md:flex items-center gap-7 px-7 py-2.5 rounded-full GlassNavigation reference-nav-pill">
             {navLinks.map((link) => {
               const isActive = pathname === link.href;
               return (
@@ -73,7 +76,11 @@ export function Navbar() {
                   href={link.href}
                   className={cn(
                     'text-xs font-sans tracking-wide transition-all duration-200 flex items-center gap-1.5 py-0.5 relative',
-                    isActive || link.hasDot
+                    isActive
+                      ? 'text-[#85DCED] font-semibold'
+                      : link.isNightMarket
+                      ? 'text-white hover:text-[#85DCED] font-medium'
+                      : link.hasDot
                       ? 'text-white font-medium'
                       : 'text-white/80 hover:text-white'
                   )}
@@ -82,10 +89,14 @@ export function Navbar() {
                     <span className="w-1.5 h-1.5 rounded-full bg-[#12B4CE] shadow-[0_0_8px_#12B4CE]" />
                   )}
 
-                  {/* Subtle warm lime/amber glow highlight matching the reference screenshot behind Services + */}
+                  {link.isNightMarket && (
+                    <span className="w-1.5 h-1.5 rounded-full bg-[#EF648F] shadow-[0_0_8px_#EF648F] animate-pulse" />
+                  )}
+
+                  {/* Glow highlight */}
                   {link.hasGlow && (
                     <span
-                      className="absolute inset-0 -inset-x-2 -inset-y-1 rounded-full bg-[#D4EAA0]/20 blur-sm pointer-events-none"
+                      className="absolute inset-0 -inset-x-2 -inset-y-1 rounded-full bg-[#12B4CE]/20 blur-sm pointer-events-none"
                       aria-hidden="true"
                     />
                   )}
@@ -174,6 +185,19 @@ export function Navbar() {
                   className="block py-2.5 px-3 rounded-xl hover:bg-white/10 text-sm font-medium"
                 >
                   Home
+                </Link>
+                <Link
+                  href="/night-market"
+                  onClick={() => setMobileMenuOpen(false)}
+                  className="py-2.5 px-3 rounded-xl hover:bg-white/10 text-sm font-medium flex items-center justify-between text-[#85DCED] border border-[#12B4CE]/30 bg-[#12B4CE]/10 shadow-[0_0_15px_rgba(18,180,206,0.15)]"
+                >
+                  <span className="flex items-center gap-2">
+                    <span className="w-2 h-2 rounded-full bg-[#12B4CE] shadow-[0_0_8px_#12B4CE] animate-pulse" />
+                    <span>Night Market</span>
+                  </span>
+                  <span className="text-[10px] font-mono font-bold bg-gradient-to-r from-[#EF648F] to-[#E83E9C] text-white px-2 py-0.5 rounded-full uppercase tracking-wider">
+                    EXCLUSIVE
+                  </span>
                 </Link>
                 <Link
                   href="/shop?category=sneakers"

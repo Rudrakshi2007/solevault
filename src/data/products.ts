@@ -6,49 +6,47 @@ export const PRODUCTS: Product[] = [
   // ==========================================
   {
     id: 'sv-001',
-    slug: 'air-jordan-1-retro-high-og-chicago',
-    brand: 'Nike / Jordan',
-    model: 'Air Jordan 1 Retro High OG',
-    name: "Air Jordan 1 High OG 'Lost & Found'",
-    category: 'basketball',
-    description: 'The definitive silhouette that transformed basketball and luxury streetwear culture forever. Crafted with aged cracked leather finishes, the iconic varsity red colorblocking, and encapsulated Nike Air cushioning.',
+    slug: 'onitsuka-tiger-serrano-black-white',
+    brand: 'Onitsuka Tiger',
+    model: 'Serrano',
+    name: 'Onitsuka Tiger Serrano, Black & White Edition',
+    category: 'lifestyle',
+    description: 'Inspired by the classic track spikes of the 1970s, the Serrano model carries the tradition of Onitsuka Tiger racing heritage. Features a lightweight nylon and suede upper in a timeless black and white monochrome palette, low-profile spiked rubber outsole, and the iconic contrasting Onitsuka Tiger cross stripes.',
     images: [
-      'https://images.unsplash.com/photo-1552346154-21d32810aba3?auto=format&fit=crop&w=1200&q=85',
-      'https://images.unsplash.com/photo-1584735935682-2f2b69dff9d2?auto=format&fit=crop&w=1200&q=85',
-      'https://images.unsplash.com/photo-1607522370275-f14206abe5d3?auto=format&fit=crop&w=1200&q=85'
+      'https://images.asics.com/is/image/asics/1183B400_001_SR_RT_GLB-3?qlt=100&wid=1024&hei=768&resMode=bisharp',
+      'https://images.asics.com/is/image/asics/1183B400_001_SR_LT_GLB-3?qlt=100&wid=1024&hei=768&resMode=bisharp',
+      'https://images.asics.com/is/image/asics/1183B400_001_SR_TP_GLB-3?qlt=100&wid=1024&hei=768&resMode=bisharp',
+      'https://images.asics.com/is/image/asics/1183B400_001_SR_BK_GLB-3?qlt=100&wid=1024&hei=768&resMode=bisharp'
     ],
-    price: 24995,
-    originalPrice: 29995,
+    price: 8999,
+    originalPrice: 10999,
     colorways: [
-      { name: 'Chicago Varsity Red', hex: '#BA1B1D', imageIndex: 0 },
-      { name: 'Shadow Black & Grey', hex: '#262626', imageIndex: 1 },
-      { name: 'Royal Blue Heritage', hex: '#1C3F94', imageIndex: 2 }
+      { name: 'Black / White', hex: '#111111', imageIndex: 0 }
     ],
     sizes: [
-      { size: 'UK 6', available: true, stock: 4 },
+      { size: 'UK 6', available: true, stock: 5 },
       { size: 'UK 7', available: true, stock: 8 },
       { size: 'UK 8', available: true, stock: 12 },
-      { size: 'UK 9', available: true, stock: 6 },
-      { size: 'UK 10', available: true, stock: 3 },
-      { size: 'UK 11', available: false, stock: 0 },
-      { size: 'UK 12', available: true, stock: 2 }
+      { size: 'UK 9', available: true, stock: 7 },
+      { size: 'UK 10', available: true, stock: 4 },
+      { size: 'UK 11', available: true, stock: 2 }
     ],
-    sku: 'DZ5485-612',
+    sku: '1183B400-001',
     stockStatus: 'in_stock',
     specifications: [
-      { label: 'Upper', value: 'Full-grain vintage cracked leather' },
-      { label: 'Cushioning', value: 'Encapsulated Air-Sole unit' },
-      { label: 'Outsole', value: 'Solid rubber with pivot circle' },
-      { label: 'Origin', value: '1985 Archive Reissue' }
+      { label: 'Upper', value: 'Lightweight nylon with premium suede overlays' },
+      { label: 'Outsole', value: 'Low-profile spiked rubber tread' },
+      { label: 'Cushioning', value: 'EVA cushioned heel wedge' },
+      { label: 'Origin', value: '1970s Japanese Track Archive' }
     ],
     audience: 'unisex',
-    tags: ['retro', 'iconic', 'basketball', 'grail', 'high-top'],
+    tags: ['onitsuka-tiger', 'serrano', 'retro', 'lifestyle', 'japanese', 'monochrome', 'black-white', 'heritage'],
     featured: true,
     newArrival: true,
     trending: true,
     heroSlide: true,
-    heroHeadline: 'THE ARCHITECT OF MODERN SNEAKER CULTURE',
-    relatedProductIds: ['sv-002', 'sv-003', 'sv-009', 'sv-010']
+    heroHeadline: '1970S JAPANESE RACING HERITAGE REBORN',
+    relatedProductIds: ['sv-002', 'sv-003', 'sv-005', 'sv-010']
   },
   {
     id: 'sv-002',

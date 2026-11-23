@@ -78,7 +78,7 @@ export function Footer() {
               COLLECTIONS
             </h4>
             <ul className="space-y-2.5 text-white/70">
-              <li><Link href="/shop?category=sneakers" className="hover:text-[#85DCED] transition-colors">Lifestyle Sneakers</Link></li>
+              <li><Link href="/night-market" className="text-[#85DCED] hover:text-[#F28A9A] transition-colors font-bold flex items-center gap-1.5"><span>Night Market ?</span><span className="text-[9px] bg-[#EF648F] text-white px-1.5 py-0.2 rounded-full font-mono">HOT</span></Link></li><li><Link href="/shop?category=sneakers" className="hover:text-[#85DCED] transition-colors">Lifestyle Sneakers</Link></li>
               <li><Link href="/shop?category=running" className="hover:text-[#85DCED] transition-colors">Performance Running</Link></li>
               <li><Link href="/shop?category=basketball" className="hover:text-[#85DCED] transition-colors">Court & Basketball</Link></li>
               <li><Link href="/shop?category=hiking" className="hover:text-[#85DCED] transition-colors">Trail & GORE-TEX</Link></li>

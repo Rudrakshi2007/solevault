@@ -17,7 +17,7 @@ import { PRODUCTS } from '@/data/products';
 import { formatINR } from '@/lib/utils';
 
 export function AuroraHero() {
-  const shoe1 = PRODUCTS[0]; // Air Jordan 1 Lost & Found
+  const shoe1 = PRODUCTS[0]; // Onitsuka Tiger Serrano, Black & White Edition
   const shoe2 = PRODUCTS[2]; // New Balance 990v6
 
   return (
